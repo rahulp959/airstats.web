@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from './logo.svg'
 
-class HomeContainer extends React.Component {
+class Home extends React.Component {
   render () {
     return (
       <div className='App'>
@@ -20,4 +20,4 @@ class HomeContainer extends React.Component {
   }
 }
 
-export default HomeContainer
+export default Home
