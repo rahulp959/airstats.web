@@ -9,7 +9,6 @@
   "devDependencies": {
     "autoprefixer": "6.7.2",
     "babel-core": "6.22.1",
-    "babel-eslint": "7.1.1",
     "babel-jest": "18.0.0",
     "babel-loader": "6.2.10",
     "babel-preset-react-app": "^2.2.0",
@@ -21,13 +20,6 @@
     "css-loader": "0.26.1",
     "detect-port": "1.1.0",
     "dotenv": "2.0.0",
-    "eslint": "3.16.1",
-    "eslint-config-react-app": "^0.6.2",
-    "eslint-loader": "1.6.0",
-    "eslint-plugin-flowtype": "2.21.0",
-    "eslint-plugin-import": "2.0.1",
-    "eslint-plugin-jsx-a11y": "4.0.0",
-    "eslint-plugin-react": "6.4.1",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.10.0",
     "fs-extra": "0.30.0",
@@ -40,6 +32,7 @@
     "promise": "7.1.1",
     "react-dev-utils": "^0.5.2",
     "standard": "^10.0.2",
+    "standard-loader": "^6.0.1",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
@@ -83,6 +76,8 @@
     ]
   },
   "standard": {
-    "globals": [ "it" ]
+    "globals": [
+      "it"
+    ]
   }
 }
