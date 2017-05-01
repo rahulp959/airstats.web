@@ -40,6 +40,7 @@
     "promise": "7.1.1",
     "react-dev-utils": "^0.5.2",
     "standard": "^10.0.2",
+    "standard-loader": "^6.0.1",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
@@ -83,6 +84,8 @@
     ]
   },
   "standard": {
-    "globals": [ "it" ]
+    "globals": [
+      "it"
+    ]
   }
 }
