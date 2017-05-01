@@ -81,5 +81,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "standard": {
+    "globals": [ "it" ]
   }
 }
