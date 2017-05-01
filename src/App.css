@@ -44,7 +44,12 @@ input[type=submit] {
     margin-left: 128px;
 }
 
+.logoSearchContainer {
+  display:flex;
+}
+
 .headerTrack {
+    flex-grow: 1;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

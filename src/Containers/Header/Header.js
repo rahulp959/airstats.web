@@ -7,14 +7,16 @@ class Header extends Component {
     return (
       <header id='topWrapper'>
         <div id='header'>
-          <div className='logoLeft push-left'>
-            <a href='/'><img src={logo} alt='VatTrack' className='logo' /></a>
-          </div>
-          <div id='headerSearchForm' className='headerTrack'>
-            <form>
-              <input type='text' id='search' />
-              <input type='submit' value='Search' className='button-skyblue' />
-            </form>
+          <div className='logoSearchContainer'>
+            <div className='logoLeft'>
+              <a href='/'><img src={logo} alt='VatTrack' className='logo' /></a>
+            </div>
+            <div id='headerSearchForm' className='headerTrack'>
+              <form>
+                <input type='text' id='search' />
+                <input type='submit' value='Search' className='button-skyblue' />
+              </form>
+            </div>
           </div>
           <nav className='navBar' role='navigation' aria-label='Navigation'>
             <ul id='navBarRoot' role='menubar'>
