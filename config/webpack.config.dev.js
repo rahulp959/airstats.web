@@ -109,7 +109,7 @@ module.exports = {
           // Webpack 2 fixes this, but for now we include this hack.
           // https://github.com/facebookincubator/create-react-app/issues/1713
           /\.(js|jsx)(\?.*)?$/,
-          /\.css$/,
+          /\.(css|scss)$/,
           /\.json$/,
           /\.svg$/
         ],
