@@ -6,7 +6,7 @@ class Header extends Component {
   render () {
     return (
       <header id='topWrapper'>
-        <div id='header'>
+        <div id='header' className="grid">
           <div className='logoSearchContainer'>
             <div className='logoLeft'>
               <a href='/'><img src={logo} alt='VatTrack' className='logo' /></a>
