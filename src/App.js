@@ -7,7 +7,7 @@ import {
 import Home from './Containers/Home/Home'
 import Header from './Containers/Header/Header'
 
-import './App.css'
+import './App.scss'
 
 class App extends Component {
   render () {
