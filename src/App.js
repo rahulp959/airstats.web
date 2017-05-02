@@ -4,15 +4,19 @@ import {
   Route
 } from 'react-router-dom'
 
-import HomeContainer from './containers/home/Home'
+import Home from './Containers/Home/Home'
+import Header from './Containers/Header/Header'
 
-import './App.css'
+import './App.scss'
 
 class App extends Component {
   render () {
     return (
       <Router>
-        <Route exact path='/' component={HomeContainer} />
+        <div>
+          <Header />
+          <Route exact path='/' component={Home} />
+        </div>
       </Router>
     )
   }
