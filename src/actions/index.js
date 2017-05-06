@@ -1,19 +1,19 @@
 import fetch from 'isomorphic-fetch'
 
-export const GET_GENERAL = 'GET_GENERAL'
+export const REQUEST_GENERAL = 'REQUEST_GENERAL'
 
-export function getGeneral () {
+export function requestGeneral () {
   return {
-    type: GET_GENERAL
+    type: REQUEST_GENERAL
   }
 }
 
-export const GET_RECENT = 'GET_RECENT'
+export const RECEIVE_GENERAL = 'RECEIVE_GENERAL'
 
-export function getRecent () {
+export function receiveGeneral (json) {
   return {
-    type: GET_RECENT,
-    count: 5
+    type: RECEIVE_GENERAL,
+    stats: json
   }
 }
 
@@ -25,11 +25,21 @@ function requestRecent () {
 }
 export const RECEIVE_RECENT = 'RECEIVE_RECENT'
 function receiveRecent (json) {
-  console.log(json)
   return {
     type: RECEIVE_RECENT,
     flights: json,
     receivedAt: Date.now()
+  }
+}
+
+export function fetchGeneral () {
+  return function (dispatch) {
+    dispatch(requestGeneral())
+    return fetch('https://api.vattrack.org/Statistics/General')
+      .then(response => response.json())
+      .then(json =>
+        dispatch(receiveGeneral(json))
+      )
   }
 }
 

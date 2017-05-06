@@ -7,7 +7,7 @@ class TableRecentFlights extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
   handleClick (e) {
-    console.log(e)
+    console.log(e.iz)
   }
 
   render () {
@@ -15,26 +15,17 @@ class TableRecentFlights extends Component {
     return (
       <table className='tablerecentflights'>
         <tbody>
-          <tr onClick={() => this.handleClick('1')}>
-            <td>DAL123</td>
-            <td className='alignright'>London Heathrow (EGLL) ► Boston International (KBOS)</td>
-          </tr>
-          <tr onClick={() => this.handleClick('2')}>
-            <td>DAL123</td>
-            <td className='alignright'>London Heathrow (EGLL) ► Boston International (KBOS)</td>
-          </tr>
-          <tr onClick={() => this.handleClick('3')}>
-            <td>DAL123</td>
-            <td className='alignright'>London Heathrow (EGLL) ► Boston International (KBOS)</td>
-          </tr>
-          <tr onClick={() => this.handleClick('4')}>
-            <td>DAL123</td>
-            <td className='alignright'>London Heathrow (EGLL) ► Boston International (KBOS)</td>
-          </tr>
-          <tr onClick={() => this.handleClick('5')}>
-            <td>DAL123</td>
-            <td className='alignright'>London Heathrow (EGLL) ► Boston International (KBOS)</td>
-          </tr>
+          {(this.props.recent.isFetching) ? <tr><td colSpan='2'>Loading...</td></tr>
+          : this.props.recent.flights.map((flight, i) => {
+            let iz = flight.id
+            return (
+              <tr onClick={() => this.handleClick({iz})} key={i}>
+                <td>{flight.callsign}</td>
+                <td className='alignright'>{flight.dep} ► {flight.arr}</td>
+              </tr>
+            )
+          })
+        }
         </tbody>
       </table>
     )

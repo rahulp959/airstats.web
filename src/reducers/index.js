@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux-immutable'
-import { GET_GENERAL, REQUEST_RECENT, RECEIVE_RECENT } from '../actions'
+import { RECEIVE_GENERAL, REQUEST_GENERAL, REQUEST_RECENT, RECEIVE_RECENT } from '../actions'
 import testReducer from './testReducer'
 
 const app = combineReducers({
@@ -12,9 +12,14 @@ export default app
 
 function general (state = { isFetching: false, departing: 0, enroute: 0, total: 0 }, action) {
   switch (action.type) {
-    case GET_GENERAL:
+    case REQUEST_GENERAL:
       return Object.assign({}, state, {
         isFetching: true
+      })
+    case RECEIVE_GENERAL:
+      return Object.assign({}, state, {
+        isFetching: false,
+        stats: action.stats
       })
     default:
       return state
