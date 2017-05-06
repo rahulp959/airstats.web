@@ -9,9 +9,7 @@ class Home extends React.Component {
       <div className='grid contentbox'>
         <div className='divrecentbox pad15'>
           <div className='centerblock'>recent</div>
-          <div>
-            <TableRecentFlights recent={this.props.recent} />
-          </div>
+          <TableRecentFlights recent={this.props.recent} />
         </div>
         <div className='newsbox pad15'>
           <div className='centerblock'>Number Statistics</div>

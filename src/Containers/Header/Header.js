@@ -9,7 +9,7 @@ class Header extends Component {
         <div id='header' className='grid'>
           <div className='logoSearchContainer'>
             <div className='logoLeft'>
-              <a href='/'><img src={logo} alt='VatTrack' className='logo' /></a>
+              <Link to='/'><img src={logo} alt='VatTrack' className='logo' /></Link>
             </div>
             <div id='headerSearchForm' className='headerTrack'>
               <form>
