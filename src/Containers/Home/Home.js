@@ -3,7 +3,25 @@ import {connect} from 'react-redux'
 import TableRecentFlights from './TableRecentFlights/TableRecentFlights'
 import TableStats from './TableStats/TableStats'
 
+import { fetchRecent, fetchGeneral } from '../../actions'
+
+let generalDispatcher, recentDispatcher
+const refreshTime = 120000
+
 class Home extends React.Component {
+  componentDidMount () {
+    this.props.dispatch(fetchGeneral())
+    this.props.dispatch(fetchRecent())
+
+    generalDispatcher = setInterval(() => this.props.dispatch(fetchGeneral()), refreshTime)
+    recentDispatcher = setInterval(() => this.props.dispatch(fetchRecent()), refreshTime)
+  }
+
+  componentWillUnmount () {
+    clearInterval(generalDispatcher)
+    clearInterval(recentDispatcher)
+  }
+
   render () {
     return (
       <div className='grid contentbox'>

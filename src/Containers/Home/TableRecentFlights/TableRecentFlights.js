@@ -16,7 +16,7 @@ class TableRecentFlights extends Component {
       <table className='tablerecentflights'>
         <tbody>
           {(this.props.recent.isFetching) ? <tr><td colSpan='2'>Loading...</td></tr>
-          : this.props.recent.flights.map((flight, i) => {
+          : /* this.props.recent.flights.map((flight, i) => {
             let iz = flight.id
             return (
               <tr onClick={() => this.handleClick({iz})} key={i}>
@@ -24,7 +24,8 @@ class TableRecentFlights extends Component {
                 <td className='alignright'>{flight.depname} ({flight.dep}) ► {flight.arrname} ({flight.arr})</td>
               </tr>
             )
-          })
+          }) */
+          null
         }
         </tbody>
       </table>

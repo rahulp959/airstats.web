@@ -1,8 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import Immutable from 'immutable'
 
-const refreshTime = 120000
-
 export const REQUEST_GENERAL = 'REQUEST_GENERAL'
 
 export function requestGeneral () {
@@ -40,10 +38,8 @@ export function fetchGeneral () {
     dispatch(requestGeneral())
     return fetch('https://api.vattrack.org/Statistics/General')
       .then(response => response.json())
-      .then(json => {
-        setTimeout(() => dispatch(fetchGeneral()), refreshTime)
-        return dispatch(receiveGeneral(Immutable.fromJS(json)))
-      })
+      .then(json =>
+        dispatch(receiveGeneral(Immutable.fromJS(json))))
   }
 }
 
@@ -52,9 +48,7 @@ export function fetchRecent () {
     dispatch(requestRecent())
     return fetch('https://api.vattrack.org/Statistics/Last/5')
       .then(response => response.json())
-      .then(json => {
-        setTimeout(() => dispatch(fetchRecent()), refreshTime)
-        return dispatch(receiveRecent(json))
-      })
+      .then(json =>
+        dispatch(receiveRecent(json)))
   }
 }
