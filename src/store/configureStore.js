@@ -9,7 +9,7 @@ const enhancer = compose(
   // Devtools.instrument(),
   // Optional. Lets you write ?debug_session=<key> in address bar to persist debug sessions
   persistState(getDebugSessionKey()),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // From extension docs
 )
 
 function getDebugSessionKey () {
