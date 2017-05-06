@@ -15,17 +15,16 @@ class TableRecentFlights extends Component {
     return (
       <table className='tablerecentflights'>
         <tbody>
-          {(this.props.recent.isFetching) ? <tr><td colSpan='2'>Loading...</td></tr>
-          : /* this.props.recent.flights.map((flight, i) => {
-            let iz = flight.id
+          {(this.props.recent.get('isFetching')) ? <tr><td colSpan='2'>Loading...</td></tr>
+          : this.props.recent.get('flights').map((flight, i) => {
+            let iz = flight.get('id')
             return (
               <tr onClick={() => this.handleClick({iz})} key={i}>
-                <td>{flight.callsign}</td>
-                <td className='alignright'>{flight.depname} ({flight.dep}) ► {flight.arrname} ({flight.arr})</td>
+                <td>{flight.get('callsign')}</td>
+                <td className='alignright'>{flight.get('depname')} ({flight.get('dep')}) ► {flight.get('arrname')} ({flight.get('arr')})</td>
               </tr>
             )
-          }) */
-          null
+          })
         }
         </tbody>
       </table>

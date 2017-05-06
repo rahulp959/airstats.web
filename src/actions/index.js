@@ -49,6 +49,6 @@ export function fetchRecent () {
     return fetch('https://api.vattrack.org/Statistics/Last/5')
       .then(response => response.json())
       .then(json =>
-        dispatch(receiveRecent(json)))
+        dispatch(receiveRecent(Immutable.fromJS(json))))
   }
 }

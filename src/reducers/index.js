@@ -22,17 +22,14 @@ function general (state = Immutable.fromJS({ isFetching: false, departing: 0, en
   }
 }
 
-function recent (state = { isFetching: false, test: 1 }, action) {
+function recent (state = Immutable.fromJS({ isFetching: false, flights: [] }), action) {
   switch (action.type) {
     case REQUEST_RECENT:
-      return Object.assign({}, state, {
-        isFetching: true
-      })
+      return state.setIn(['isFetching'], true)
     case RECEIVE_RECENT:
-      return Object.assign({}, state, {
-        isFetching: false,
-        flights: action.flights
-      })
+      let newState = state.setIn(['isFetching'], false)
+      newState = newState.setIn(['flights'], action.flights)
+      return newState
     default:
       return state
   }
