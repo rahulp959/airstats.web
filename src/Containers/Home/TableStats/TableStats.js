@@ -8,15 +8,15 @@ class TableStats extends Component {
         <tbody>
           <tr>
             <td>Flights Tracked</td>
-            <td className='alignright'>{ this.props.general.isFetching ? 'Loading...' : this.props.general.stats.total }</td>
+            <td className='alignright'>{ this.props.general.get('isFetching') ? 'Loading...' : this.props.general.getIn(['stats', 'total']) }</td>
           </tr>
           <tr>
             <td>Airborne Flights</td>
-            <td className='alignright'>{ this.props.general.isFetching ? 'Loading...' : this.props.general.stats.enroute }</td>
+            <td className='alignright'>{ this.props.general.get('isFetching') ? 'Loading...' : this.props.general.getIn(['stats', 'enroute']) }</td>
           </tr>
           <tr>
             <td>Departing Flights</td>
-            <td className='alignright'>{ this.props.general.isFetching ? 'Loading...' : this.props.general.stats.departing }</td>
+            <td className='alignright'>{ this.props.general.get('isFetching') ? 'Loading...' : this.props.general.getIn(['stats', 'departing']) }</td>
           </tr>
         </tbody>
       </table>

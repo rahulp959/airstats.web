@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import Immutable from 'immutable'
 
 export const REQUEST_GENERAL = 'REQUEST_GENERAL'
 
@@ -38,7 +39,7 @@ export function fetchGeneral () {
     return fetch('https://api.vattrack.org/Statistics/General')
       .then(response => response.json())
       .then(json =>
-        dispatch(receiveGeneral(json))
+        dispatch(receiveGeneral(Immutable.fromJS(json)))
       )
   }
 }
