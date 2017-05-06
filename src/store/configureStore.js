@@ -6,6 +6,7 @@ import thunkMiddleware from 'redux-thunk'
 import { fetchRecent } from '../actions'
 
 const enhancer = compose(
+  applyMiddleware(thunkMiddleware),
   // Required! Enable Redux DevTools with the monitors you chose
   Devtools.instrument(),
   // Optional. Lets you write ?debug_session=<key> in address bar to persist debug sessions
@@ -22,7 +23,7 @@ function getDebugSessionKey () {
 export default function configureStore (initialState) {
   // Note: only Redux >= 3.1.0 supports passing enhancer as third argument.
   // See https://github.com/rackt/redux/releases/tag/v3.1.0
-  const store = createStore(rootReducer, enhancer, applyMiddleware(thunkMiddleware))
+  const store = createStore(rootReducer, initialState, enhancer)
 
   store.dispatch(fetchRecent()).then(() => console.log(store.getState()))
 
