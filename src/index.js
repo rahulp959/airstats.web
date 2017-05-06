@@ -7,9 +7,9 @@ import { fetchRecent, fetchGeneral } from './actions'
 
 import configureStore from './store/configureStore'
 import Immutable from 'immutable'
-import stats from './data/stats'
+// import stats from './data/stats'
 
-const store = configureStore(Immutable.Map(stats))
+const store = configureStore(Immutable.Map())
 
 store.dispatch(fetchGeneral())
 store.dispatch(fetchRecent())
