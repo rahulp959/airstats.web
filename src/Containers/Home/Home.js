@@ -32,6 +32,7 @@ class Home extends React.Component {
         <div className='newsbox pad15'>
           <div className='centerblock'>Number Statistics</div>
           <TableStats general={this.props.general} />
+          <div className='centerblock alignright mt1r pr5' style={{textTransform:'none'}}>Since Apr 30 2017</div>
         </div>
       </div>
     )

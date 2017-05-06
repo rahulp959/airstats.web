@@ -204,6 +204,14 @@ input[type=submit] {
   }
 }
 
+.mt1r {
+  margin-top: 1rem;
+}
+
+.pr5 {
+  padding-right: 5px;
+}
+
 .pad15 {
   padding: 15px;
 }
@@ -222,4 +230,8 @@ input[type=submit] {
 .aboutbox {
   flex-wrap: wrap;
   flex-direction: row;
+}
+
+.alignright {
+  text-align: right;
 }
