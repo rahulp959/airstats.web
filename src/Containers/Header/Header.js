@@ -9,7 +9,7 @@ class Header extends Component {
         <div id='header' className='grid'>
           <div className='logoSearchContainer'>
             <div className='logoLeft'>
-              <a href='/'><img src={logo} alt='VatTrack' className='logo' /></a>
+              <Link to='/'><img src={logo} alt='VatTrack' className='logo' /></Link>
             </div>
             <div id='headerSearchForm' className='headerTrack'>
               <form>
@@ -21,7 +21,8 @@ class Header extends Component {
           <nav className='navBar' role='navigation' aria-label='Navigation'>
             <ul id='navBarRoot' role='menubar'>
               <li role='menuitem'><Link to='/flight/map'>Live Flight Map</Link></li>
-              <li role='menuitem'><Link to='/statistics/route'>Route Statistics</Link></li>
+              <li><Link to='/statistics/route'>Route Analysis</Link></li>
+              <li><Link to='/statistics'>Statistics</Link></li>
               <li role='menuitem'><Link to='/flight/search'>Flight Search</Link></li>
               <li role='menuitem'><Link to='/about'>About Vattrack</Link></li>
               <li role='menuitem'><a href='https://www.aircharts.org'>AirCharts</a></li>
