@@ -24,7 +24,9 @@ class Header extends Component {
 
   onSearch (event) {
     event.preventDefault()
-    this.props.history.push(`/search/${this.state.searchInput}`)
+    if (this.state.searchInput !== '') {
+      this.props.history.push(`/search/${this.state.searchInput}`)
+    }
   }
 
   render () {

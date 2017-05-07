@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux-immutable'
 import { RECEIVE_GENERAL, REQUEST_GENERAL, REQUEST_RECENT, RECEIVE_RECENT } from '../actions'
+import search from './search'
 import Immutable from 'immutable'
 
 const app = combineReducers({
   general,
-  recent
+  recent,
+  search
 })
 
 export default app
