@@ -13,7 +13,7 @@ class TableSearch extends Component {
   render () {
     // http://api.vattrack.org/Flights/{SearchTerm}
     return (
-      <table className='tableSearch'>
+      <table className='tablerecentflights'>
         <tbody>
           {(this.props.searchResults.get('isFetching')) ? <tr><td colSpan='2'>Loading...</td></tr>
           : this.props.searchResults.get('search').map((flight, i) => {
