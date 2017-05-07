@@ -158,8 +158,6 @@ input[type=submit] {
 
 .divrecentbox {
   background: rgba(0, 47, 93, .8);
-  /* Use member provided screenshot */
-  background-image: url(http://i.imgur.com/cII5eI7.png);
   background-size: cover;
   flex: 1;
   margin-right: 20px;
@@ -174,6 +172,8 @@ input[type=submit] {
   padding-top: 5px;
   padding-bottom: 5px;
   margin-bottom: 15px;
+
+  border-radius: 7px;
 }
 
 .tablerecentflights {
@@ -195,10 +195,15 @@ input[type=submit] {
         padding-right: 15px;
       }
       &:last-child {
-        text-align: right;
         padding-right: 5px;
       }
     }
+
+    .arrow {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
     &:last-child {
       border: none;
     }
@@ -235,4 +240,12 @@ input[type=submit] {
 
 .alignright {
   text-align: right;
+}
+
+.aligncenter {
+  text-align: center;
+}
+
+.alignleft {
+  text-align: left;
 }

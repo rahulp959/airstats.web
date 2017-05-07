@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import TableRecentFlights from './TableRecentFlights/TableRecentFlights'
 import TableStats from './TableStats/TableStats'
+import BgImg from './2zjkl80.jpg'
 
 import { fetchRecent, fetchGeneral } from '../../actions'
 
@@ -25,7 +26,7 @@ class Home extends React.Component {
   render () {
     return (
       <div className='grid contentbox'>
-        <div className='divrecentbox pad15'>
+        <div className='divrecentbox pad15' style={{backgroundImage: `url(${BgImg})`}}>
           <div className='centerblock'>recent</div>
           <TableRecentFlights recent={this.props.recent} />
         </div>
