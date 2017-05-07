@@ -1,8 +1,34 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import logo from './logo.png'
+import { withRouter } from 'react-router'
 
 class Header extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      searchInput: ''
+    }
+
+    this.onSearch = this.onSearch.bind(this)
+    this.onSearchChange = this.onSearchChange.bind(this)
+  }
+
+  onSearchChange (event) {
+    this.setState({
+      searchInput: event.target.value
+    })
+  }
+
+  onSearch (event) {
+    event.preventDefault()
+    if (this.state.searchInput !== '') {
+      this.props.history.push(`/search/${this.state.searchInput}`)
+    }
+  }
+
   render () {
     return (
       <header id='topWrapper'>
@@ -12,8 +38,8 @@ class Header extends Component {
               <Link to='/'><img src={logo} alt='VatTrack' className='logo' /></Link>
             </div>
             <div id='headerSearchForm' className='headerTrack'>
-              <form>
-                <input type='text' id='search' />
+              <form onSubmit={this.onSearch}>
+                <input type='text' id='search' value={this.state.searchInput} onChange={this.onSearchChange} />
                 <input type='submit' value='Search' className='button-skyblue' />
               </form>
             </div>
@@ -34,4 +60,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default withRouter(connect()(Header))
