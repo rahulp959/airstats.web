@@ -33,13 +33,37 @@ function receiveRecent (json) {
   }
 }
 
+export const REQUEST_SEARCH = 'REQUEST_SEARCH'
+const requestSearch = () => ({type: REQUEST_SEARCH})
+
+export const RECEIVE_SEARCH = 'RECEIVE_SEARCH'
+const receiveSearch = (json) => {
+  return {
+    type: RECEIVE_SEARCH,
+    searchResults: json
+  }
+}
+
+export const fetchSearch = (searchQuery) => {
+  return (dispatch) => {
+    dispatch(requestSearch())
+    return fetch(`https://api.vattrack.org/Flights/${searchQuery}`)
+      .then(response => response.json())
+      .then(json => {
+        dispatch(receiveSearch(Immutable.fromJS(json)))
+      }
+    )
+  }
+}
+
 export function fetchGeneral () {
   return function (dispatch) {
     dispatch(requestGeneral())
     return fetch('https://api.vattrack.org/Statistics/General')
       .then(response => response.json())
       .then(json =>
-        dispatch(receiveGeneral(Immutable.fromJS(json))))
+        dispatch(receiveGeneral(Immutable.fromJS(json)))
+    )
   }
 }
 
@@ -49,6 +73,7 @@ export function fetchRecent () {
     return fetch('https://api.vattrack.org/Statistics/Last/5')
       .then(response => response.json())
       .then(json =>
-        dispatch(receiveRecent(Immutable.fromJS(json))))
+        dispatch(receiveRecent(Immutable.fromJS(json)))
+    )
   }
 }

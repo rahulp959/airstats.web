@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class TableRecentFlights extends Component {
+class TableSearch extends Component {
   constructor (props) {
     super(props)
 
@@ -11,19 +11,17 @@ class TableRecentFlights extends Component {
   }
 
   render () {
-    // http://api.vattrack.org/Statistics/Last/5
+    // http://api.vattrack.org/Flights/{SearchTerm}
     return (
       <table className='tablerecentflights'>
         <tbody>
-          {(this.props.recent.get('isFetching')) ? <tr><td colSpan='2'>Loading...</td></tr>
-          : this.props.recent.get('flights').map((flight, i) => {
+          {(this.props.searchResults.get('isFetching')) ? <tr><td colSpan='2'>Loading...</td></tr>
+          : this.props.searchResults.get('search').map((flight, i) => {
             let iz = flight.get('id')
             return (
               <tr onClick={() => this.handleClick({iz})} key={i}>
                 <td>{flight.get('callsign')}</td>
-                <td className='dep'>{flight.get('depname')} ({flight.get('dep')})</td>
-                <td className='arrow'>►</td>
-                <td className='arr'>{flight.get('arrname')} ({flight.get('arr')})</td>
+                <td className='alignright'>{flight.get('depname')} ({flight.get('dep')}) ► {flight.get('arrname')} ({flight.get('arr')})</td>
               </tr>
             )
           })
@@ -34,4 +32,4 @@ class TableRecentFlights extends Component {
   }
 }
 
-export default TableRecentFlights
+export default TableSearch

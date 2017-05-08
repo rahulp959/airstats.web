@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import TableRecentFlights from './TableRecentFlights/TableRecentFlights'
 import TableStats from './TableStats/TableStats'
+import './Home.scss'
 
 import { fetchRecent, fetchGeneral } from '../../actions'
 
@@ -24,15 +25,15 @@ class Home extends React.Component {
 
   render () {
     return (
-      <div className='grid contentbox'>
-        <div className='divrecentbox pad15'>
-          <div className='centerblock'>recent</div>
+      <div className='contentbox'>
+        <div className='divrecentbox'>
+          <div className='title'>recent</div>
           <TableRecentFlights recent={this.props.recent} />
         </div>
-        <div className='newsbox pad15'>
-          <div className='centerblock'>Number Statistics</div>
+        <div className='newsbox'>
+          <div className='title'>Number Statistics</div>
           <TableStats general={this.props.general} />
-          <div className='centerblock alignright mt1r pr5' style={{textTransform: 'none'}}>Since Apr 30 2017</div>
+          <div className='sincebox' style={{textTransform: 'none'}}>Since Apr 30 2017</div>
         </div>
       </div>
     )

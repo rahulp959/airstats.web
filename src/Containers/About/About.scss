@@ -1,0 +1,7 @@
+@import '../../styles/_base.scss';
+
+.aboutbox {
+  @extend %base;
+  flex-wrap: wrap;
+  flex-direction: row;
+}

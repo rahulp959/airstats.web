@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import Home from './Containers/Home/Home'
 import Header from './Containers/Header/Header'
 import About from './Containers/About/About'
+import Search from './Containers/Search/Search'
 import './App.scss'
 
 const App = ({store}) => (
@@ -13,7 +14,8 @@ const App = ({store}) => (
       <div>
         <Header />
         <Route exact path='/' component={Home} />
-        <Route exact path='/about' component={About} />
+        <Route path='/about' component={About} />
+        <Route path='/search/:searchTerm' component={Search} />
       </div>
     </Router>
   </Provider>

@@ -1,0 +1,92 @@
+@import "../../styles/_base.scss";
+
+.contentbox {
+  @extend %base;
+  margin: 0 auto;
+  padding-top: 15px;
+  display: flex;
+}
+
+.divrecentbox {
+  background: rgba(0, 47, 93, .8);
+  background-size: cover;
+  flex: 1;
+  margin-right: 20px;
+  background-image: url('./2zjkl80.jpg');
+  padding: 15px;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+  color: white;
+  background: rgba(0, 0, 0, .7);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.sincebox {
+  @extend .title;
+  margin-top: 1rem;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.tablerecentflights {
+  border-collapse: collapse;
+  width: 100%;
+  background: rgba(0, 0, 0, .7);
+  > tbody > tr {
+    border-bottom: 1px solid rgb(255,255,255);
+    > td {
+      padding: 0;
+      margin: 0;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      color: white;
+
+      &:first-child {
+        padding-left: 5px;
+        padding-right: 15px;
+      }
+      &:last-child {
+        padding-right: 5px;
+      }
+    }
+
+    .dep {
+      text-align: right;
+    }
+
+    .arrow {
+      text-align: center;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    &:last-child {
+      border: none;
+    }
+  }
+}
+
+.tablestats {
+  @extend .tablerecentflights;
+  > tbody > tr {
+    > td {
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.newsbox {
+  border: 1px solid black;
+  background: rgba(0, 47, 93, .8);
+  color: rgb(255,255,255);
+  width: 33%;
+  padding: 15px;
+}

@@ -1,0 +1,92 @@
+@import "../../styles/_base.scss";
+@import "../../styles/_button.scss";
+
+header {
+  width: 100%;
+  background: #002F5D;
+  /*background: linear-gradient(#002F5D, #002F5D 40%, #021624);*/
+  box-shadow: 0 1px 1px -1px #888;
+
+  .header {
+    @extend %base;
+    width: 90%;
+    padding-top: 5px;
+    margin: 0 auto;
+
+    input {
+      padding: 5px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid darkblue;
+      margin-right: 5px;
+
+      &.button {
+        @extend %button-skyblue;
+      }
+    }
+
+    .search {
+      width: 40%;
+    }
+
+    nav {
+      display: block;
+      clear: both;
+
+      ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        list-style: none;
+        min-height: 40px;
+        box-sizing: border-box;
+        font-family: GillSansLight, sans-serif;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+
+        > li {
+          > a {
+            display: block;
+            color: white;
+            padding: 10px 0 7px;
+            text-decoration: none;
+          }
+
+          &:first-child {
+            margin-left: -5px;
+            padding-left: 5px;
+          }
+          &:hover {
+            border-bottom: 3px solid #ED8000;
+          }
+        }
+      }
+    }
+
+    .logoSearchContainer {
+      display: flex;
+
+      .logoLeft {
+        width: 10rem;
+      }
+
+      .logo {
+        width: 120px;
+        height: 45px;
+        border: 0;
+      }
+
+      .headerTrack {
+        flex-grow: 1;
+        font-smoothing: antialiased;
+        font-smooth: always;
+        position: relative;
+        white-space: nowrap;
+        padding-top: 10px;
+      }
+    }
+  }
+}

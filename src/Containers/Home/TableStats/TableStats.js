@@ -4,7 +4,7 @@ class TableStats extends Component {
   render () {
     // http://api.vattrack.org/Statistics/Last/5
     return (
-      <table className='tablerecentflights'>
+      <table className='tablestats'>
         <tbody>
           <tr>
             <td>Flights Tracked</td>
