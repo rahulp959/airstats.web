@@ -2,11 +2,14 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Map, Marker, Popup, TileLayer, Polyline} from 'react-leaflet'
+import {Icon} from 'leaflet'
 import './Flight.scss'
 
 import { fetchFlightPosition, fetchFlightData } from '../../ducks/flight'
 
 import FlightProgress from './FlightProgress/FlightProgress'
+
+import planeUrl from './plane.png'
 
 let dataDispatcher, positionDispatcher
 
@@ -78,8 +81,12 @@ class Flight extends React.Component {
   }
 
   renderFinalPlane () {
+    const icon = new Icon({
+      iconUrl: planeUrl,
+      iconSize: [32, 32]
+    })
     const lastPosition = this.props.flightPositions.last()
-    return (lastPosition) ? <Marker position={[parseFloat(lastPosition.get('lat')), parseFloat(lastPosition.get('lon'))]} /> : null
+    return (lastPosition) ? <Marker position={[parseFloat(lastPosition.get('lat')), parseFloat(lastPosition.get('lon'))]} icon={icon} /> : null
   }
 
   render () {
