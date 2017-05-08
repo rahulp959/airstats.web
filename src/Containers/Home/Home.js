@@ -4,7 +4,8 @@ import TableRecentFlights from './TableRecentFlights/TableRecentFlights'
 import TableStats from './TableStats/TableStats'
 import './Home.scss'
 
-import { fetchRecent, fetchGeneral } from '../../actions'
+import { fetchGeneral } from '../../ducks/general.js'
+import { fetchRecent } from '../../ducks/recent.js'
 
 let generalDispatcher, recentDispatcher
 const refreshTime = 120000
