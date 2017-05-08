@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
+import {Map, Marker, Popup, TileLayer, Polyline} from 'react-leaflet'
 import './Flight.scss'
 
 import { fetchFlightPosition } from '../../ducks/flight'
@@ -16,12 +16,16 @@ class Flight extends React.Component {
   }
 
   renderMap () {
-    const position = [51.505, -0.09]
+    const firstPosition = this.props.flightPositions.first()
+    const position = (firstPosition) ? [parseFloat(firstPosition.get('lat')), parseFloat(firstPosition.get('lon'))] : [51.505, -0.09]
     const map = (
       <Map center={position} maxZoom={11} zoom={10}>
         <TileLayer url='http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' />
         <TileLayer url='http://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}.png' attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' />
-        {this.renderPositions()}
+        {/* Re-enable if you want clickable markers */}
+        {/* this.renderPositions() */}
+        {this.renderPolyline()}
+        {this.renderFinalPlane()}
       </Map>
     )
 
@@ -31,7 +35,7 @@ class Flight extends React.Component {
   renderPositions () {
     return this.props.flightPositions.map(
       (position) =>
-        <Marker position={[parseFloat(position.get('lat')), parseFloat(position.get('lon'))]} key={`${position.get('lat')}, ${position.get('lon')}`}>
+        <Marker opacity={0} position={[parseFloat(position.get('lat')), parseFloat(position.get('lon'))]} key={`${position.get('lat')}, ${position.get('lon')}`}>
           <Popup>
             <div>
               <span>Lat: {position.get('lat')}</span>
@@ -41,6 +45,20 @@ class Flight extends React.Component {
           </Popup>
         </Marker>
     )
+  }
+
+  renderPolyline () {
+    const positions = this.props.flightPositions.map(
+      (position) => [parseFloat(position.get('lat')), parseFloat(position.get('lon'))]
+    )
+
+    console.dir(positions.toArray())
+    return <Polyline positions={positions.toArray()} />
+  }
+
+  renderFinalPlane () {
+    const lastPosition = this.props.flightPositions.last()
+    return (lastPosition) ? <Marker position={[parseFloat(lastPosition.get('lat')), parseFloat(lastPosition.get('lon'))]} /> : null
   }
 
   render () {
