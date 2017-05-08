@@ -1,6 +1,6 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import { persistState } from 'redux-devtools'
-import rootReducer from '../reducers'
+import rootReducer from '../ducks'
 import thunkMiddleware from 'redux-thunk'
 
 const enhancer = compose(

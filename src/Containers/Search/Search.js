@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { fetchSearch } from '../../actions'
+import { fetchSearch } from '../../ducks/search'
 import TableSearch from './TableSearch/TableSearch'
 
 class Search extends React.Component {
