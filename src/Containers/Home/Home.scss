@@ -1,11 +1,5 @@
-@import "../../styles/_base.scss";
-
-.contentbox {
-  @extend %base;
-  margin: 0 auto;
-  padding-top: 15px;
-  display: flex;
-}
+@import "../../styles/contentbox.scss";
+@import "../../styles/title.scss";
 
 .divrecentbox {
   background: rgba(0, 47, 93, .8);
@@ -14,17 +8,6 @@
   margin-right: 20px;
   background-image: url('./2zjkl80.jpg');
   padding: 15px;
-}
-
-.title {
-  text-align: center;
-  text-transform: uppercase;
-  display: block;
-  color: white;
-  background: rgba(0, 0, 0, .7);
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-bottom: 15px;
 }
 
 .sincebox {
