@@ -17,16 +17,29 @@ class Flight extends React.Component {
   }
 
   renderMap () {
-    const firstPosition = this.props.flightPositions.first()
+    let firstPosition = this.props.flightPositions.first()
+    let bounds = [[0, 0], [90, 180]]
+    if (this.props.flightData.get('status') !== 'Arrived') {
+      firstPosition = this.props.flightPositions.last()
+    } else {
+      let lastPosition = this.props.flightPositions.last()
+      if (firstPosition && lastPosition) {
+        bounds = [
+        [parseFloat(firstPosition.get('lat')), parseFloat(firstPosition.get('lon'))],
+        [parseFloat(lastPosition.get('lat')), parseFloat(lastPosition.get('lon'))]
+        ]
+      }
+    }
+
     const position = (firstPosition) ? [parseFloat(firstPosition.get('lat')), parseFloat(firstPosition.get('lon'))] : [51.505, -0.09]
     const map = (
-      <Map center={position} maxZoom={11} zoom={10}>
+      <Map center={position} maxZoom={11} zoom={10} bounds={bounds}>
         <TileLayer url='http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' />
         <TileLayer url='http://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}.png' attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' />
         {/* Re-enable if you want clickable markers */}
         {/* this.renderPositions() */}
         {this.renderPolyline()}
-        {this.renderFinalPlane()}
+        {this.props.flightData.get('status') !== 'Arrived' && this.renderFinalPlane()}
       </Map>
     )
 
@@ -65,24 +78,24 @@ class Flight extends React.Component {
     return (
       <div className='contentbox'>
         <div className='flightinfo'>
-          <h2>ASA55</h2>
-          <h3>En-Route</h3>
+          <h2>{this.props.flightData.get('callsign')}</h2>
+          <h3>{this.props.flightData.get('status')}</h3>
         </div>
         <div className='flightprogress'>
           <div className='departure'>
             <span className='icao'>
-              PANC
+              {this.props.flightData.get('dep')}
             </span>
             <span className='name'>
-              Anchorage International
+              {this.props.flightData.get('dep_name')}
             </span>
           </div>
           <div className='arrival'>
             <span className='icao'>
-              PABR
+              {this.props.flightData.get('arr')}
             </span>
             <span className='name'>
-              Barrow
+              {this.props.flightData.get('arr_name')}
             </span>
           </div>
         </div>
@@ -100,9 +113,13 @@ class Flight extends React.Component {
               <tr>
                 <td>Actual/<i>Estimated</i>
                 </td>
-                <td>May 7, 2017 22:17</td>
+                <td>{this.props.flightData.get('departed_at') ? this.props.flightData.get('departed_at') : 'Not Departed'}</td>
                 <td>
-                  <i>May 8, 2017 02:11</i>
+                  {
+                    (this.props.flightData.get('status') !== 'Arrived')
+                      ? (<i>Estimated {this.props.flightData.get('arrival_est')}</i>)
+                      : this.props.flightData.get('arrived_at')
+                  }
                 </td>
               </tr>
             </tbody>
@@ -115,24 +132,24 @@ class Flight extends React.Component {
               <tr>
                 <td>Pilot</td>
                 <td>
-                  <Link to='/search/876594'>Daniel Hawton PAFA (876594)</Link>
+                  <Link to={`/search/${this.props.flightData.get('vatsim_id')}`}>{this.props.flightData.get('pilot_name')} ({this.props.flightData.get('vatsim_id')})</Link>
                 </td>
               </tr>
               <tr>
                 <td>Speed</td>
-                <td>401 knots</td>
+                <td>{this.props.flightData.get('spd')} knots</td>
               </tr>
               <tr>
                 <td>Altitude</td>
-                <td>33234 ft (Planned: 33000 ft)</td>
+                <td>{this.props.flightData.get('alt')} ft (Planned: {this.props.flightData.get('req_alt')} ft)</td>
               </tr>
               <tr>
                 <td>Distance</td>
-                <td>Direct 1344 nm (Remaining: 344 nm)</td>
+                <td>Direct {this.props.flightData.get('dist_direct')} nm (Remaining: {this.props.flightData.get('dist_remain')} nm)</td>
               </tr>
               <tr>
                 <td>Route</td>
-                <td>DCT</td>
+                <td>{this.props.flightData.get('route')}</td>
               </tr>
             </tbody>
           </table>
