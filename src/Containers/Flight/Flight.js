@@ -4,9 +4,11 @@ import {connect} from 'react-redux'
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 import './Flight.scss'
 
+import { fetchFlightPosition } from '../../ducks/flight'
+
 class Flight extends React.Component {
   componentDidMount () {
-    // generalDispatcher = setInterval(() => this.props.dispatch(fetchGeneral()), refreshTime)
+    this.props.dispatch(fetchFlightPosition(27371))
   }
 
   componentWillUnmount () {
@@ -19,15 +21,26 @@ class Flight extends React.Component {
       <Map center={position} maxZoom={11} zoom={10}>
         <TileLayer url='http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' />
         <TileLayer url='http://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}.png' attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' />
-        <Marker position={position}>
-          <Popup>
-            <span>A pretty CSS3 popup.<br />Easily customizable.</span>
-          </Popup>
-        </Marker>
+        {this.renderPositions()}
       </Map>
     )
 
     return map
+  }
+
+  renderPositions () {
+    return this.props.flightPositions.map(
+      (position) =>
+        <Marker position={[parseFloat(position.get('lat')), parseFloat(position.get('lon'))]} key={`${position.get('lat')}, ${position.get('lon')}`}>
+          <Popup>
+            <div>
+              <span>Lat: {position.get('lat')}</span>
+              <br />
+              <span>Long: {position.get('lon')}</span>
+            </div>
+          </Popup>
+        </Marker>
+    )
   }
 
   render () {
@@ -112,7 +125,7 @@ class Flight extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  return {general: state.get('general'), recent: state.get('recent')}
+  return {flightPositions: state.getIn(['flight', 'flight', 'positions']), recent: state.get('recent')}
 }
 
 export default connect(mapStateToProps)(Flight)
