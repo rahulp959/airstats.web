@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import logo from './logo.png'
 import { withRouter } from 'react-router'
+import './Header.scss'
 
 class Header extends Component {
   constructor (props) {
@@ -31,21 +32,21 @@ class Header extends Component {
 
   render () {
     return (
-      <header id='topWrapper'>
-        <div id='header' className='grid'>
+      <header>
+        <div className='header grid'>
           <div className='logoSearchContainer'>
             <div className='logoLeft'>
               <Link to='/'><img src={logo} alt='VatTrack' className='logo' /></Link>
             </div>
-            <div id='headerSearchForm' className='headerTrack'>
+            <div className='headerTrack'>
               <form onSubmit={this.onSearch}>
-                <input type='text' id='search' value={this.state.searchInput} onChange={this.onSearchChange} />
-                <input type='submit' value='Search' className='button-skyblue' />
+                <input type='text' className='search' value={this.state.searchInput} onChange={this.onSearchChange} />
+                <input type='submit' value='Search' className='button' />
               </form>
             </div>
           </div>
-          <nav className='navBar' role='navigation' aria-label='Navigation'>
-            <ul id='navBarRoot' role='menubar'>
+          <nav role='navigation' aria-label='Navigation'>
+            <ul role='menubar'>
               <li role='menuitem'><Link to='/flight/map'>Live Flight Map</Link></li>
               <li><Link to='/statistics/route'>Route Analysis</Link></li>
               <li><Link to='/statistics'>Statistics</Link></li>

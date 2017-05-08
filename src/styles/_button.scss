@@ -1,0 +1,31 @@
+%button {
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    filter: alpha(opacity=90);
+    background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, .05) 40%, rgba(0, 0, 0, .1));
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, .05) 40%, rgba(0, 0, 0, .1));
+  }
+}
+
+%button-green {
+  @extend %button;
+  background: rgb(28, 184, 65);
+}
+
+%button-red {
+  @extend %button;
+  background: rgb(202, 60, 60);
+}
+
+%button-orange {
+  @extend %button;
+  background: rgb(223, 117, 20);
+}
+
+%button-skyblue {
+  @extend %button;
+  background: rgb(66, 184, 221);
+}
