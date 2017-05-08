@@ -4,11 +4,12 @@ import {connect} from 'react-redux'
 import {Map, Marker, Popup, TileLayer, Polyline} from 'react-leaflet'
 import './Flight.scss'
 
-import { fetchFlightPosition } from '../../ducks/flight'
+import { fetchFlightPosition, fetchFlightData } from '../../ducks/flight'
 
 class Flight extends React.Component {
   componentDidMount () {
-    this.props.dispatch(fetchFlightPosition(27371))
+    this.props.dispatch(fetchFlightPosition(this.props.match.params.flightId))
+    this.props.dispatch(fetchFlightData(this.props.match.params.flightId))
   }
 
   componentWillUnmount () {
@@ -52,7 +53,6 @@ class Flight extends React.Component {
       (position) => [parseFloat(position.get('lat')), parseFloat(position.get('lon'))]
     )
 
-    console.dir(positions.toArray())
     return <Polyline positions={positions.toArray()} color='#ED8000' />
   }
 
@@ -143,7 +143,7 @@ class Flight extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  return {flightPositions: state.getIn(['flight', 'flight', 'positions']), recent: state.get('recent')}
+  return { flightPositions: state.getIn(['flight', 'flight', 'positions']), flightData: state.getIn(['flight', 'flight', 'flightData']) }
 }
 
 export default connect(mapStateToProps)(Flight)

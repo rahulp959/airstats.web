@@ -1,6 +1,35 @@
 import fetch from 'isomorphic-fetch'
 import Immutable from 'immutable'
 
+/* Flight Data */
+export const REQUEST_FLIGHT_DATA = 'REQUEST_FLIGHT_DATA'
+export const RECEIVE_FLIGHT_DATA = 'RECEIVE_FLIGHT_DATA'
+
+export function requestFlightData () {
+  return {
+    type: REQUEST_FLIGHT_DATA
+  }
+}
+
+export function receiveFlightData (json) {
+  return {
+    type: RECEIVE_FLIGHT_DATA,
+    flightData: json
+  }
+}
+
+export function fetchFlightData (flightId) {
+  return function (dispatch) {
+    dispatch(requestFlightData())
+    return fetch(`https://api.vattrack.org/Flight/${flightId}`)
+      .then(response => response.json())
+      .then(json =>
+        dispatch(receiveFlightData(Immutable.fromJS(json)))
+      )
+  }
+}
+
+/* Positions */
 export const REQUEST_FLIGHT_POSITION = 'REQUEST_FLIGHT_POSITION'
 
 export function requestFlightPosition () {
@@ -29,7 +58,7 @@ export function fetchFlightPosition (flightId) {
   }
 }
 
-export default function flight (state = Immutable.fromJS({ isFetching: true, flight: { positions: [] } }), action) {
+export default function flight (state = Immutable.fromJS({ isFetching: true, flight: { positions: [], flightData: {} } }), action) {
   switch (action.type) {
     case REQUEST_FLIGHT_POSITION:
       return state.setIn(['isFetching'], true)
@@ -54,6 +83,12 @@ export default function flight (state = Immutable.fromJS({ isFetching: true, fli
       )
       let newState = state.setIn(['isFetching'], false)
       newState = newState.setIn(['flight', 'positions'], newPositions)
+      return newState
+    case REQUEST_FLIGHT_DATA:
+      return state.setIn(['isFetching'], true)
+    case RECEIVE_FLIGHT_DATA:
+      newState = state.setIn(['isFetching'], false)
+      newState = newState.setIn(['flight', 'flightData'], action.flightData)
       return newState
     default:
       return state

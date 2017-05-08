@@ -18,7 +18,7 @@ const App = ({store}) => (
         <Route exact path='/' component={Home} />
         <Route path='/about' component={About} />
         <Route path='/search/:searchTerm' component={Search} />
-        <Route path='/flight/:id' component={Flight} />
+        <Route path='/flight/:flightId' component={Flight} />
       </div>
     </Router>
   </Provider>
