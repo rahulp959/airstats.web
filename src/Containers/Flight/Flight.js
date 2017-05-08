@@ -53,7 +53,7 @@ class Flight extends React.Component {
     )
 
     console.dir(positions.toArray())
-    return <Polyline positions={positions.toArray()} />
+    return <Polyline positions={positions.toArray()} color='#ED8000' />
   }
 
   renderFinalPlane () {
