@@ -41,9 +41,11 @@ class Flight extends React.Component {
           <div className='dividedtitle'>Flight Times</div>
           <table>
             <thead>
-              <th>&nbsp;</th>
-              <th>Departure</th>
-              <th>Landing</th>
+              <tr>
+                <th>&nbsp;</th>
+                <th>Departure</th>
+                <th>Landing</th>
+              </tr>
             </thead>
             <tbody>
               <tr>
