@@ -21,9 +21,9 @@ class TableRecentFlights extends Component {
             return (
               <tr onClick={() => this.handleClick({iz})} key={i}>
                 <td>{flight.get('callsign')}</td>
-                <td className='alignright'>{flight.get('depname')} ({flight.get('dep')})</td>
-                <td className='aligncenter arrow'>►</td>
-                <td className='alignleft'>{flight.get('arrname')} ({flight.get('arr')})</td>
+                <td className='dep'>{flight.get('depname')} ({flight.get('dep')})</td>
+                <td className='arrow'>►</td>
+                <td className='arr'>{flight.get('arrname')} ({flight.get('arr')})</td>
               </tr>
             )
           })
