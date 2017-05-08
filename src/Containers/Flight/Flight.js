@@ -6,14 +6,22 @@ import './Flight.scss'
 
 import { fetchFlightPosition, fetchFlightData } from '../../ducks/flight'
 
+import FlightProgress from './FlightProgress/FlightProgress'
+
+let dataDispatcher, positionDispatcher
+
 class Flight extends React.Component {
   componentDidMount () {
     this.props.dispatch(fetchFlightPosition(this.props.match.params.flightId))
     this.props.dispatch(fetchFlightData(this.props.match.params.flightId))
+
+    dataDispatcher = setInterval(() => this.props.dispatch(fetchFlightData(this.props.match.params.flightId)), 60000)
+    positionDispatcher = setInterval(() => this.props.dispatch(fetchFlightPosition(this.props.match.params.flightId)), 60000)
   }
 
   componentWillUnmount () {
-    // clearInterval(generalDispatcher)
+    clearInterval(dataDispatcher)
+    clearInterval(positionDispatcher)
   }
 
   renderMap () {
@@ -33,7 +41,7 @@ class Flight extends React.Component {
 
     const position = (firstPosition) ? [parseFloat(firstPosition.get('lat')), parseFloat(firstPosition.get('lon'))] : [51.505, -0.09]
     const map = (
-      <Map center={position} maxZoom={11} zoom={10} bounds={bounds}>
+      <Map center={position} maxZoom={11} zoom={6} bounds={bounds}>
         <TileLayer url='http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' />
         <TileLayer url='http://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}.png' attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' />
         {/* Re-enable if you want clickable markers */}
@@ -81,24 +89,7 @@ class Flight extends React.Component {
           <h2>{this.props.flightData.get('callsign')}</h2>
           <h3>{this.props.flightData.get('status')}</h3>
         </div>
-        <div className='flightprogress'>
-          <div className='departure'>
-            <span className='icao'>
-              {this.props.flightData.get('dep')}
-            </span>
-            <span className='name'>
-              {this.props.flightData.get('dep_name')}
-            </span>
-          </div>
-          <div className='arrival'>
-            <span className='icao'>
-              {this.props.flightData.get('arr')}
-            </span>
-            <span className='name'>
-              {this.props.flightData.get('arr_name')}
-            </span>
-          </div>
-        </div>
+        <FlightProgress flightData={this.props.flightData} />
         <div className='flightdetails'>
           <div className='dividedtitle'>Flight Times</div>
           <table>

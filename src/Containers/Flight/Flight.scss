@@ -86,6 +86,13 @@
   padding-top: 20px;
   display: inline-block;
 
+  a {
+    color: darkblue;
+    &:hover {
+      color: #ED8000;
+    }
+  }
+
   > .dividedtitle {
     @extend %dividedtitle;
     border-left: 2px solid #9a9a9a;
