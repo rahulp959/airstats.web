@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 import './Flight.scss'
 
 class Flight extends React.Component {
@@ -10,6 +11,23 @@ class Flight extends React.Component {
 
   componentWillUnmount () {
     // clearInterval(generalDispatcher)
+  }
+
+  renderMap () {
+    const position = [51.505, -0.09]
+    const map = (
+      <Map center={position} maxZoom={11} zoom={10}>
+        <TileLayer url='http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' />
+        <TileLayer url='http://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}.png' attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' />
+        <Marker position={position}>
+          <Popup>
+            <span>A pretty CSS3 popup.<br />Easily customizable.</span>
+          </Popup>
+        </Marker>
+      </Map>
+    )
+
+    return map
   }
 
   render () {
@@ -41,15 +59,20 @@ class Flight extends React.Component {
           <div className='dividedtitle'>Flight Times</div>
           <table>
             <thead>
-              <th>&nbsp;</th>
-              <th>Departure</th>
-              <th>Landing</th>
+              <tr>
+                <th>&nbsp;</th>
+                <th>Departure</th>
+                <th>Landing</th>
+              </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Actual/<i>Estimated</i></td>
+                <td>Actual/<i>Estimated</i>
+                </td>
                 <td>May 7, 2017 22:17</td>
-                <td><i>May 8, 2017 02:11</i></td>
+                <td>
+                  <i>May 8, 2017 02:11</i>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -60,7 +83,9 @@ class Flight extends React.Component {
             <tbody>
               <tr>
                 <td>Pilot</td>
-                <td><Link to='/search/876594'>Daniel Hawton PAFA (876594)</Link></td>
+                <td>
+                  <Link to='/search/876594'>Daniel Hawton PAFA (876594)</Link>
+                </td>
               </tr>
               <tr>
                 <td>Speed</td>
@@ -81,6 +106,7 @@ class Flight extends React.Component {
             </tbody>
           </table>
         </div>
+        <div className='flightmap'>{this.renderMap()}</div>
       </div>
     )
   }
