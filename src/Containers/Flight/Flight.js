@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Map, Marker, Popup, TileLayer, Polyline} from 'react-leaflet'
-import {Icon} from 'leaflet'
+import {DivIcon} from 'leaflet'
 import './Flight.scss'
 
 import { fetchFlightPosition, fetchFlightData } from '../../ducks/flight'
@@ -81,12 +81,14 @@ class Flight extends React.Component {
   }
 
   renderFinalPlane () {
-    const icon = new Icon({
-      iconUrl: planeUrl,
+    const lastPosition = this.props.flightPositions.last()
+
+    const divIcon = new DivIcon({
+      html: `<img src=${planeUrl} class=rotate-${lastPosition && lastPosition.get('hdg')} />`,
       iconSize: [32, 32]
     })
-    const lastPosition = this.props.flightPositions.last()
-    return (lastPosition) ? <Marker position={[parseFloat(lastPosition.get('lat')), parseFloat(lastPosition.get('lon'))]} icon={icon} /> : null
+
+    return (lastPosition) ? <Marker position={[parseFloat(lastPosition.get('lat')), parseFloat(lastPosition.get('lon'))]} icon={divIcon} /> : null
   }
 
   render () {
