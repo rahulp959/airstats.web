@@ -12,7 +12,7 @@ if (window.__REDUX_DEVTOOLS_EXTENSION__) {
   )
 } else {
   enhancer = compose(
-    applyMiddleware(thunkMiddleware),
+    applyMiddleware(thunkMiddleware)
   )
 }
 
