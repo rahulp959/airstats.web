@@ -16,10 +16,8 @@ class Search extends React.Component {
 
   render () {
     return (
-      <div className='grid contentbox'>
-        <div className='divrecentbox pad15'>
-          <TableSearch searchResults={this.props.searchResults} />
-        </div>
+      <div className='contentbox'>
+        <TableSearch searchResults={this.props.searchResults} />
       </div>
     )
   }
