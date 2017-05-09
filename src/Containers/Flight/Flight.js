@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Map, Marker, Popup, TileLayer, Polyline} from 'react-leaflet'
 import {DivIcon} from 'leaflet'
@@ -8,6 +7,8 @@ import './Flight.scss'
 import { fetchFlightPosition, fetchFlightData } from '../../ducks/flight'
 
 import FlightProgress from './FlightProgress/FlightProgress'
+import FlightDetails from './FlightDetails/FlightDetails'
+import FlightData from './FlightData/FlightData'
 
 import planeUrl from './plane.png'
 
@@ -99,61 +100,8 @@ class Flight extends React.Component {
           <h3>{this.props.flightData.get('status')}</h3>
         </div>
         <FlightProgress flightData={this.props.flightData} />
-        <div className='flightdetails'>
-          <div className='dividedtitle'>Flight Times</div>
-          <table>
-            <thead>
-              <tr>
-                <th>&nbsp;</th>
-                <th>Departure</th>
-                <th>Landing</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Actual/<i>Estimated</i>
-                </td>
-                <td>{this.props.flightData.get('departed_at') ? this.props.flightData.get('departed_at') : 'Not Departed'}</td>
-                <td>
-                  {
-                    (this.props.flightData.get('status') !== 'Arrived')
-                      ? (<i>Estimated {this.props.flightData.get('arrival_est')}</i>)
-                      : this.props.flightData.get('arrived_at')
-                  }
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div className='flightdata'>
-          <div className='dividedtitle'>Flight Data</div>
-          <table>
-            <tbody>
-              <tr>
-                <td>Pilot</td>
-                <td>
-                  <Link to={`/search/${this.props.flightData.get('vatsim_id')}`}>{this.props.flightData.get('pilot_name')} ({this.props.flightData.get('vatsim_id')})</Link>
-                </td>
-              </tr>
-              <tr>
-                <td>Speed</td>
-                <td>{this.props.flightData.get('spd')} knots</td>
-              </tr>
-              <tr>
-                <td>Altitude</td>
-                <td>{this.props.flightData.get('alt')} ft (Planned: {this.props.flightData.get('req_alt')} ft)</td>
-              </tr>
-              <tr>
-                <td>Distance</td>
-                <td>Direct {this.props.flightData.get('dist_direct')} nm (Remaining: {this.props.flightData.get('dist_remain')} nm)</td>
-              </tr>
-              <tr>
-                <td>Route</td>
-                <td>{this.props.flightData.get('route')}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <FlightDetails flightData={this.props.flightData} />
+        <FlightData flightData={this.props.flightData} />
         <div className='flightmap'>{this.renderMap()}</div>
       </div>
     )
