@@ -1,0 +1,37 @@
+@import "../../styles/contentbox.scss";
+
+table.searchbox {
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  width: 100%;
+  thead {
+    .header {
+      text-align: center;
+      background: linear-gradient(#267BAE, #3A5F97);
+      color: white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      min-height: 2em;
+    }
+    .titles {
+      th {
+        margin: 0;
+        padding: 5px;
+      }
+      background-color: #00a0e2;
+      color: #ffffff;
+      text-align: left;
+      font-size: 14px;
+
+    }
+  }
+  tbody {
+    color: darkblue;
+    td {
+      padding-bottom: 10px;
+      border-bottom: 1px solid black;
+      font-size: 14px;
+    }
+  }
+}

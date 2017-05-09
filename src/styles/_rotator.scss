@@ -1,0 +1,5 @@
+@for $i from 1 through 360 {
+  .rotate-#{$i} {
+    transform: rotate(#{$i}deg) !important;
+  }
+}

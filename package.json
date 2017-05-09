@@ -5,8 +5,10 @@
   "dependencies": {
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
+    "leaflet": "^1.0.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-leaflet": "^1.1.6",
     "react-redux": "^5.0.4",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",

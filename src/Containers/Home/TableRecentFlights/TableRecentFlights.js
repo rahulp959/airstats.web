@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 class TableRecentFlights extends Component {
   constructor (props) {
@@ -7,7 +9,7 @@ class TableRecentFlights extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
   handleClick (e) {
-    console.log(e.iz)
+    this.props.history.push(`/flight/${e.iz}`)
   }
 
   render () {
@@ -34,4 +36,4 @@ class TableRecentFlights extends Component {
   }
 }
 
-export default TableRecentFlights
+export default withRouter(connect()(TableRecentFlights))
