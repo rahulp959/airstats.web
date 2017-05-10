@@ -15,10 +15,12 @@
   h2 {
     color: darkblue;
     margin: 0;
+    font-size: 1.5rem;
   }
   h3 {
     color: #ED8000;
     margin-top: 0;
+    font-size: 1.2rem;
   }
 }
 
@@ -37,15 +39,24 @@
     font-size: 1.5rem;
 
     > .icao {
-      font-weight: 200;
+      font-weight: bold;
       display: block;
+      color: darkblue;
     }
 
     > .name {
-      font-weight: 100;
+      font-weight: 400;
       text-transform: capitalize;
-      font-size: 16px;
+      font-size: 14pt;
       display: block;
+    }
+    > .location {
+      display: block;
+      text-transform: none;
+      font-size: 12pt;
+      .city {
+        text-transform: capitalize;
+      }
     }
   }
 
