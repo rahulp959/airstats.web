@@ -14,7 +14,7 @@ import './App.scss'
 
 ReactGA.initialize('UA-99000586-1')
 
-logPageView() {
+const logPageView = () => {
   ReactGA.set({page: window.locatioh.pathname + window.location.search})
   ReactGA.pageview(window.location.pathname + window.location.search)
 }
