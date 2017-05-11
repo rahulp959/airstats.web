@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import ReactGA from 'react-ga'
 
 import About from './Containers/About/About'
 import Flight from './Containers/Flight/Flight'
@@ -11,9 +12,16 @@ import Search from './Containers/Search/Search'
 import NotFound from './Containers/NotFound/NotFound'
 import './App.scss'
 
+ReactGA.initialize('UA-99000586-1')
+
+logPageView() {
+  ReactGA.set({page: window.locatioh.pathname + window.location.search})
+  ReactGA.pageview(window.location.pathname + window.location.search)
+}
+
 const App = ({store}) => (
   <Provider store={store}>
-    <Router>
+    <Router onUpdate={logPageView}>
       <div>
         <Header />
         <Switch>
