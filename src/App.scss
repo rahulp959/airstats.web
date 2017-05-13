@@ -8,3 +8,8 @@ body {
 input[type=submit] {
   cursor: pointer;
 }
+
+div.container {
+  display: flex;
+  flex-wrap: wrap;
+}

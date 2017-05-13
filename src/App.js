@@ -14,7 +14,7 @@ import './App.scss'
 const App = ({store}) => (
   <Provider store={store}>
     <Router>
-      <div>
+      <div className='container'>
         <Header />
         <Switch>
           <Route exact path='/' component={Home} />
