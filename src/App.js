@@ -27,6 +27,7 @@ const App = ({store}) => (
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />
+          <Route exact path='/flight/map' component={NotFound} />
           <Route path='/flight/:flightId' component={Flight} />
           <Route path='/search/:searchTerm' component={Search} />
           <Route component={NotFound} />
