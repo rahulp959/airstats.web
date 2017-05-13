@@ -21,7 +21,7 @@ export function receiveGeneral (json) {
 export function fetchGeneral () {
   return function (dispatch) {
     dispatch(requestGeneral())
-    return fetch('https://api.vattrack.org/Statistics/General')
+    return fetch('https://api.airstats.org/Statistics/General')
       .then(response => response.json())
       .then(json =>
         dispatch(receiveGeneral(Immutable.fromJS(json)))

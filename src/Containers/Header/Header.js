@@ -35,7 +35,7 @@ class Header extends Component {
           <nav role='navigation' aria-label='Navigation'>
             <div className='logoSearchContainer'>
               <div className='logoLeft'>
-                <Link to='/'><img src={logo} alt='VatTrack' className='logo' /></Link>
+                <Link to='/'><img src={logo} alt='AirStats' className='logo' /></Link>
               </div>
               <div className='headerTrack'>
                 <form onSubmit={this.onSearch}>
@@ -56,7 +56,7 @@ class Header extends Component {
                 <Link to='/statistics'>Statistics</Link>
               </li>
               <li role='menuitem'>
-                <Link to='/about'>About Vattrack</Link>
+                <Link to='/about'>About AirStats</Link>
               </li>
               <li role='menuitem'>
                 <a href='https://www.aircharts.org'>AirCharts</a>

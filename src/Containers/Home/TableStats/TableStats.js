@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 class TableStats extends Component {
   render () {
-    // http://api.vattrack.org/Statistics/Last/5
+    // http://api.airstats.org/Statistics/Last/5
     return (
       <table className='tablestats'>
         <tbody>

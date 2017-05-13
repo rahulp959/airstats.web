@@ -13,7 +13,7 @@ class TableRecentFlights extends Component {
   }
 
   render () {
-    // http://api.vattrack.org/Statistics/Last/5
+    // http://api.airstats.org/Statistics/Last/5
     return (
       <table className='tablerecentflights'>
         <tbody>

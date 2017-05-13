@@ -19,7 +19,7 @@ function receiveRecent (json) {
 export function fetchRecent () {
   return function (dispatch) {
     dispatch(requestRecent())
-    return fetch('https://api.vattrack.org/Statistics/Last/5')
+    return fetch('https://api.airstats.org/Statistics/Last/5')
       .then(response => response.json())
       .then(json =>
         dispatch(receiveRecent(Immutable.fromJS(json)))

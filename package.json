@@ -1,6 +1,6 @@
 {
-  "name": "vattrack.web",
-  "version": "0.1.0",
+  "name": "airstats.web",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "he": "^1.1.1",

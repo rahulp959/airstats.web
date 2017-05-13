@@ -15,7 +15,7 @@ class TableSearch extends Component {
   }
 
   render () {
-    // http://api.vattrack.org/Flights/{SearchTerm}
+    // http://api.airstats.org/Flights/{SearchTerm}
     return (
       <table className='searchbox'>
         <thead>

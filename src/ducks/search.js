@@ -15,7 +15,7 @@ const receiveSearch = (json) => {
 export const fetchSearch = (searchQuery) => {
   return (dispatch) => {
     dispatch(requestSearch())
-    return fetch(`https://api.vattrack.org/Flights/${searchQuery}`)
+    return fetch(`https://api.airstats.org/Flights/${searchQuery}`)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveSearch(Immutable.fromJS(json)))
