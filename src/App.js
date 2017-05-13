@@ -19,24 +19,24 @@ ReactGA.initialize('UA-99000586-1', {
 const logPageView = () => {
   ReactGA.set({page: window.location.pathname + window.location.search})
   ReactGA.pageview(window.location.pathname + window.location.search)
+  return null
 }
 
 const App = ({store}) => (
   <Provider store={store}>
     <Router>
-      <Route path='/' component={logPageView}>
-        <div className='container'>
-          <Header />
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/about' component={About} />
-            <Route exact path='/flight/map' component={NotFound} />
-            <Route path='/flight/:flightId' component={Flight} />
-            <Route path='/search/:searchTerm' component={Search} />
-            <Route component={NotFound} />
-          </Switch>
-        </div>
-      </Route>
+      <div className='container'>
+        <Route path='/' component={logPageView} />
+        <Header />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/about' component={About} />
+          <Route exact path='/flight/map' component={NotFound} />
+          <Route path='/flight/:flightId' component={Flight} />
+          <Route path='/search/:searchTerm' component={Search} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
     </Router>
   </Provider>
 )
