@@ -24,7 +24,7 @@ const logPageView = () => {
 const App = ({store}) => (
   <Provider store={store}>
     <Router>
-      <Route path="/" component ={logPageView}>
+      <Route path='/' component={logPageView} />
       <div className='container'>
         <Header />
         <Switch>
