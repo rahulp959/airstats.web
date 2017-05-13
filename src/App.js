@@ -12,16 +12,19 @@ import Search from './Containers/Search/Search'
 import NotFound from './Containers/NotFound/NotFound'
 import './App.scss'
 
-ReactGA.initialize('UA-99000586-1')
+ReactGA.initialize('UA-99000586-1', {
+  debug: true
+})
 
 const logPageView = () => {
-  ReactGA.set({page: window.locatioh.pathname + window.location.search})
+  ReactGA.set({page: window.location.pathname + window.location.search})
   ReactGA.pageview(window.location.pathname + window.location.search)
 }
 
 const App = ({store}) => (
   <Provider store={store}>
-    <Router onUpdate={logPageView}>
+    <Router>
+      <Route path="/" component ={logPageView}>
       <div className='container'>
         <Header />
         <Switch>
