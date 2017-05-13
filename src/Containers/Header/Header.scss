@@ -2,14 +2,13 @@
 @import "../../styles/_button.scss";
 
 header {
-  width: 100%;
-  background: #002F5D;
-  /*background: linear-gradient(#002F5D, #002F5D 40%, #021624);*/
   box-shadow: 0 1px 1px -1px #888;
+  flex: 0 0 100%;
+  background: #002F5D;
 
   .header {
     @extend %base;
-    width: 90%;
+    width: 100%;
     padding-top: 5px;
     margin: 0 auto;
 
@@ -30,9 +29,6 @@ header {
     }
 
     nav {
-      display: block;
-      clear: both;
-
       ul {
         margin: 0;
         padding: 0;
@@ -59,9 +55,99 @@ header {
             margin-left: -5px;
             padding-left: 5px;
           }
+
           &:hover {
             border-bottom: 3px solid #ED8000;
           }
+        }
+      }
+
+      #menu-toggle {
+        display: none;
+      }
+
+      .label-toggle {
+        display: none;
+      }
+      @media screen and (max-width: 768px) {
+        /*[type="checkbox"]:checked ul {
+          display: block;
+          z-index: 9999;
+          position: absolute;
+          right: 20px;
+          left: 20px;
+          padding-top: 5px;
+        }*/
+        a {
+          color: #777;
+        }
+
+        ul {
+        }
+
+        ul li {
+          display: block;
+          float: none;
+          width: 100%;
+          text-align: left;
+          background: #222;
+          text-indent: 20px;
+        }
+
+        ul > li {
+          margin-left: 0;
+        }
+
+        ul li ul li {
+          display: block;
+          float: none;
+        }
+
+        ul li ul {
+          display: block;
+          position: relative;
+          width: 100%;
+          z-index: 9999;
+          float: none;
+        }
+
+        h1 {
+          font-size: 26px;
+        }
+
+        .label-toggle {
+          cursor: pointer;
+          display: block;
+          float: right;
+          height: 35px;
+          margin-top: 1em;
+          width: 35px;
+        }
+
+        #menu-toggle:checked ~ ul {
+          opacity: 1;
+          height: 100vh;
+          visibility: visible;
+        }
+
+        label {
+          display: block;
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          position: absolute;
+          right: 20px;
+          top: 5px;
+        }
+
+        label:after {
+          content: '';
+          display: block;
+          width: 30px;
+          height: 5px;
+          background: #777;
+          margin: 7px 5px;
+          box-shadow: 0 10px 0 #777, 0 20px 0 #777;
         }
       }
     }

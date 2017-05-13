@@ -22,7 +22,7 @@ const logPageView = () => {
 const App = ({store}) => (
   <Provider store={store}>
     <Router onUpdate={logPageView}>
-      <div>
+      <div className='container'>
         <Header />
         <Switch>
           <Route exact path='/' component={Home} />
