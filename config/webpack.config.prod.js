@@ -2,6 +2,8 @@
 
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+var StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var ManifestPlugin = require('webpack-manifest-plugin')
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
@@ -38,7 +40,7 @@ module.exports = {
   bail: true,
   // We generate sourcemaps in production. This is slow but gives good results.
   // You can exclude the *.map files from the build during deployment.
-  devtool: 'source-map',
+  devtool: '',
   // In production, we only want to load the polyfills and the app code.
   entry: [
     require.resolve('./polyfills'),
@@ -142,7 +144,7 @@ module.exports = {
           use: [
             {
               loader: 'css-loader',
-              options: { importLoaders: 2 }
+              options: { importLoaders: 2, minimize: true }
             },
             {
               loader: 'postcss-loader'
@@ -210,6 +212,9 @@ module.exports = {
         }
       }
     }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async'
+    }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
     // It is absolutely essential that NODE_ENV was set to production here.
@@ -235,11 +240,7 @@ module.exports = {
       disable: false,
       allChunks: true
     }),
-    // Create common chunk
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      filename: 'static/js/[name].[hash:8].js'
-    }),
+    new StyleExtHtmlWebpackPlugin(),
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
     // having to parse `index.html`.
