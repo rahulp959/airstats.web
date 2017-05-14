@@ -21,7 +21,7 @@ export function receiveFlightData (json) {
 export function fetchFlightData (flightId) {
   return function (dispatch) {
     dispatch(requestFlightData())
-    return fetch(`https://api.vattrack.org/Flight/${flightId}`)
+    return fetch(`https://api.airstats.org/Flight/${flightId}`)
       .then(response => response.json())
       .then(json =>
         dispatch(receiveFlightData(Immutable.fromJS(json)))
@@ -50,7 +50,7 @@ export function receiveFlightPosition (json) {
 export function fetchFlightPosition (flightId) {
   return function (dispatch) {
     dispatch(requestFlightPosition())
-    return fetch(`https://api.vattrack.org/Flight/${flightId}/Positions`)
+    return fetch(`https://api.airstats.org/Flight/${flightId}/Positions`)
       .then(response => response.json())
       .then(json =>
         dispatch(receiveFlightPosition(Immutable.fromJS(json)))
