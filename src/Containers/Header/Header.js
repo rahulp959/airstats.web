@@ -39,7 +39,7 @@ class Header extends Component {
               </div>
               <div className='headerTrack'>
                 <form onSubmit={this.onSearch}>
-                  <input type='text' className='search' value={this.state.searchInput} onChange={this.onSearchChange} />
+                  <input type='text' className='search' placeholder="Search by CID or callsign" value={this.state.searchInput} onChange={this.onSearchChange} />
                   <input type='submit' value='Search' className='button' />
                 </form>
               </div>
