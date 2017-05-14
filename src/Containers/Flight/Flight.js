@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Map, Marker, Popup, TileLayer, Polyline} from 'react-leaflet'
 import {DivIcon} from 'leaflet'
 import './Flight.scss'
+import ReactGA from 'react-ga'
 
 import { fetchFlightPosition, fetchFlightData } from '../../ducks/flight'
 
@@ -19,13 +20,26 @@ class Flight extends React.Component {
     this.props.dispatch(fetchFlightPosition(this.props.match.params.flightId))
     this.props.dispatch(fetchFlightData(this.props.match.params.flightId))
 
-    dataDispatcher = setInterval(() => this.props.dispatch(fetchFlightData(this.props.match.params.flightId)), 60000)
+    dataDispatcher = setInterval(() => {
+      this.logDataRefresh()
+      return this.props.dispatch(fetchFlightData(this.props.match.params.flightId))
+    }, 60000)
     positionDispatcher = setInterval(() => this.props.dispatch(fetchFlightPosition(this.props.match.params.flightId)), 60000)
   }
 
   componentWillUnmount () {
     clearInterval(dataDispatcher)
     clearInterval(positionDispatcher)
+  }
+
+  logDataRefresh () {
+    ReactGA.set({page: window.location.pathname + window.location.search})
+    ReactGA.event({
+      category: 'Flight',
+      action: 'Updated flight position',
+      value: parseInt(this.props.match.params.flightId)
+    })
+    return null
   }
 
   renderMap () {
