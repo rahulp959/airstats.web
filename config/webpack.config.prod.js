@@ -203,9 +203,11 @@ module.exports = {
         removeEmptyAttributes: true,
         removeStyleLinkTypeAttributes: true,
         keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
+        minify: {
+          minifyJS: true,
+          minifyCSS: true,
+          minifyURLs: true
+        }
       }
     }),
     // Makes some environment variables available to the JS code, for example:
@@ -232,6 +234,11 @@ module.exports = {
       filename: cssFilename,
       disable: false,
       allChunks: true
+    }),
+    // Create common chunk
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'static/js/[name].[hash:8].js'
     }),
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
