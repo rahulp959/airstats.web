@@ -201,6 +201,11 @@ module.exports = {
     // a plugin that prints an error when you attempt to do this.
     // See https://github.com/facebookincubator/create-react-app/issues/240
     new CaseSensitivePathsPlugin(),
+    // Create common chunk
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'static/js/[name].[hash:8].js'
+    }),
     // If you require a missing module and then `npm install` it, you still have
     // to restart the development server for Webpack to discover it. This plugin
     // makes the discovery automatic so you don't have to restart.
