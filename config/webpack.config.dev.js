@@ -3,6 +3,7 @@
 // var autoprefixer = require('autoprefixer')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
 var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
@@ -192,6 +193,9 @@ module.exports = {
       inject: true,
       template: paths.appHtml
     }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async'
+    }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
     new webpack.DefinePlugin(env.stringified),
@@ -201,11 +205,6 @@ module.exports = {
     // a plugin that prints an error when you attempt to do this.
     // See https://github.com/facebookincubator/create-react-app/issues/240
     new CaseSensitivePathsPlugin(),
-    // Create common chunk
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      filename: 'static/js/[name].[hash:8].js'
-    }),
     // If you require a missing module and then `npm install` it, you still have
     // to restart the development server for Webpack to discover it. This plugin
     // makes the discovery automatic so you don't have to restart.
