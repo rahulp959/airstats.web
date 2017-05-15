@@ -1,0 +1,8 @@
+@import '../../styles/_base.scss';
+
+.faq {
+  @extend %base;
+  h2, h4 {
+    color: darkblue;
+  }
+}

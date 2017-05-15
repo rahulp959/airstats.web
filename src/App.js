@@ -6,6 +6,7 @@ import ReactGA from 'react-ga'
 
 import About from './Containers/About/About'
 import Privacy from './Containers/About/Privacy/Privacy'
+import FAQ from './Containers/FAQ/FAQ'
 import Flight from './Containers/Flight/Flight'
 import Home from './Containers/Home/Home'
 import Header from './Containers/Header/Header'
@@ -34,6 +35,7 @@ const App = ({store}) => (
           <Route exact path='/' component={Home} />
           <Route exact path='/about' component={About} />
           <Route exact path='/about/privacy' component={Privacy} />
+          <Route exact path='/faq' component={FAQ} />
           <Route exact path='/flight/map' component={NotFound} />
           <Route path='/flight/:flightId' component={Flight} />
           <Route path='/search/:searchTerm' component={Search} />
