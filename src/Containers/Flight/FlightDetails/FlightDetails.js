@@ -21,7 +21,7 @@ class FlightDetails extends React.Component {
               <td>
                 {
                   (this.props.flightData.get('status') !== 'Arrived')
-                    ? (<i>Estimated {this.props.flightData.get('arrival_est')}</i>)
+                    ? (this.props.flightData.get('arrival_est') === 'Unknown') ? '' : (<i>Est {this.props.flightData.get('arrival_est')}</i>)
                     : this.props.flightData.get('arrived_at')
                 }
               </td>
