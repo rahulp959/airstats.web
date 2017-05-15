@@ -1,0 +1,9 @@
+@import '../../styles/_base.scss';
+
+footer {
+  @extend %base;
+  border-top: 2px solid #002F5D;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}

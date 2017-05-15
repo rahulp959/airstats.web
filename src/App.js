@@ -8,6 +8,7 @@ import About from './Containers/About/About'
 import Flight from './Containers/Flight/Flight'
 import Home from './Containers/Home/Home'
 import Header from './Containers/Header/Header'
+import Footer from './Containers/Footer/Footer'
 import Search from './Containers/Search/Search'
 import NotFound from './Containers/NotFound/NotFound'
 import './App.scss'
@@ -36,6 +37,7 @@ const App = ({store}) => (
           <Route path='/search/:searchTerm' component={Search} />
           <Route component={NotFound} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   </Provider>
