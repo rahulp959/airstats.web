@@ -7,12 +7,11 @@ class Privacy extends React.Component {
       <div className='privacy'>
         <h2>Privacy Policy</h2>
         <h3>What information does AirStats collect and how is it used?</h3>
-        <p>The collection of information is public based or information you give us.  The information we obtain includes, but is not limited to:
-          <ul>
-            <li>From VATSIM, we obtain your name, VATSIM ID and VATSIM flight details</li>
-            <li>From your connect to us, your IP address, user agent and local time</li>
-          </ul>
-        </p>
+        <p>The collection of information is public based or information you give us.  The information we obtain includes, but is not limited to:</p>
+        <ul>
+          <li>From VATSIM, we obtain your name, VATSIM ID and VATSIM flight details</li>
+          <li>From your connect to us, your IP address, user agent and local time</li>
+        </ul>
         <p>The information is used to generate statistics of flights and website usage.  Connection information is shared with Google Analytics for use
           in analyzing traffic information and is anonymized, subject to their Privacy Policy.</p>
         <h3>IP Address, User Agent, Location data</h3>

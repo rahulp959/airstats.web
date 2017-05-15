@@ -7,14 +7,13 @@ class FAQ extends React.Component {
       <div className='faq'>
         <h2>FAQ</h2>
         <h4>1. Why can I not find my flight on AirStats?</h4>
-        <p>AirStats has a specific set of requirements to keep flights logged. These include, but are not limited to:
-          <ul>
-            <li>Your flight must be on VATSIM for the entire duration of your flight</li>
-            <li>When it is first identified, it must be on the ground at the departure airport</li>
-            <li>The flight must have a flight plan filed</li>
-            <li>The flight cannot be absent from the data feed for longer than 5 fetchings (~5 minutes)</li>
-          </ul>
-        </p>
+        <p>AirStats has a specific set of requirements to keep flights logged. These include, but are not limited to:</p>
+        <ul>
+          <li>Your flight must be on VATSIM for the entire duration of your flight</li>
+          <li>When it is first identified, it must be on the ground at the departure airport</li>
+          <li>The flight must have a flight plan filed</li>
+          <li>The flight cannot be absent from the data feed for longer than 5 fetchings (~5 minutes)</li>
+        </ul>
         <h4>2. Do you track ATC sessions?</h4>
         <p>The short answer is no.  While we would like to, along with online indications and notifications, the truth is the airspaces are complex, dynamic and constantly changing.
         The time required to collect, compile and keep updated is beyond what we have available at this present time.</p>
