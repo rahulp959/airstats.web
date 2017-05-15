@@ -11,18 +11,6 @@ header {
     @extend %base;
     padding-top: 5px;
 
-    input {
-      padding: 5px;
-      font-size: 16px;
-      border-radius: 4px;
-      border: 1px solid darkblue;
-      margin-right: 5px;
-
-      &.button {
-        @extend %button-skyblue;
-      }
-    }
-
     nav {
       ul {
         margin: 0;
@@ -86,6 +74,21 @@ header {
 
       .headerTrack {
         padding-top: 10px;
+        flex: 1;
+        input {
+          padding: 5px;
+          font-size: 16px;
+          border-radius: 4px;
+          border: 1px solid darkblue;
+          margin-right: 5px;
+          &.search {
+            width: 300px;
+          }
+
+          &.button {
+            @extend %button-skyblue;
+          }
+        }
       }
     }
   }
