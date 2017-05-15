@@ -1,146 +1,169 @@
 @import "../../styles/_base.scss";
-@import "../../styles/contentbox.scss";
-@import "../../styles/title.scss";
 @import "../../styles/_dividedtitle.scss";
 @import "../../styles/_rotator.scss";
 
-.contentbox {
-  @extend .contentbox;
-  flex-wrap: wrap;
-}
+.flight {
+  @extend %base;
+  margin: 15px auto 0;
 
-.flightinfo {
-  display: block;
-  width: 100%;
-  h2 {
-    color: darkblue;
-    margin: 0;
-    font-size: 1.5rem;
+  > div {
+    margin-bottom: 15px;
   }
-  h3 {
-    color: #ED8000;
-    margin-top: 0;
-    font-size: 1.2rem;
-  }
-}
 
-.flightprogress {
-  display: block;
-  justify-content: space-between;
-  margin: 0;
-  text-transform: uppercase;
-  overflow: hidden;
-  width: 100%;
-  flex-direction: row;
+  .flightinfo {
+    @extend %base;
+    flex: 1;
 
-  > .departure, > .arrival {
-    width: 50%;
-    display: inline-block;
-    font-size: 1.5rem;
-
-    > .icao {
-      font-weight: bold;
-      display: block;
+    h2 {
       color: darkblue;
+      margin: 0;
+      font-size: 1.5rem;
     }
 
-    > .name {
-      font-weight: 400;
-      text-transform: capitalize;
-      font-size: 14pt;
-      display: block;
+    h3 {
+      color: #ED8000;
+      margin-top: 0;
+      font-size: 1.2rem;
     }
-    > .location {
-      display: block;
-      text-transform: none;
-      font-size: 12pt;
-      .city {
+  }
+
+  .flightprogress {
+    display: flex;
+    flex: 1 1 100%;
+    justify-content: space-between;
+    margin: 0;
+    text-transform: uppercase;
+    width: 100%;
+    flex-direction: row;
+    padding-bottom: 20px;
+
+     > .arrival,
+     > .departure {
+      flex: 1;
+      font-size: 1.5rem;
+
+      > .icao {
+        font-weight: bold;
+        color: darkblue;
+      }
+
+      > .name {
+        font-weight: 400;
         text-transform: capitalize;
+        font-size: 14pt;
+      }
+
+      > .location {
+        text-transform: none;
+        font-size: 12pt;
+
+        .city {
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    > .arrival {
+      text-align: right;
+    }
+  }
+
+  .flightbox {
+    display: flex;
+    margin: 0 auto;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    .flightmap {
+      flex: 2;
+      height: 600px;
+
+      .leaflet-container {
+        height: 600px;
+
+        .leaflet-div-icon {
+          background: none;
+          border: none;
+        }
+      }
+    }
+
+    .flightstrip {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      background-color: #f5f5f5;
+
+      .flightdetails {
+        > .dividedtitle {
+          @extend %dividedtitle;
+        }
+
+        table {
+          flex: 1;
+          border: 0;
+          padding: 0;
+          margin: 0;
+          color: darkblue;
+
+          thead th {
+            text-align: center;
+          }
+
+          tbody {
+            td:not(:first-child) {
+              font-weight: 200;
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      .flightdata {
+        padding-top: 20px;
+
+        a {
+          color: darkblue;
+
+          &:hover {
+            color: #ED8000;
+          }
+        }
+
+        > .dividedtitle {
+          @extend %dividedtitle;
+        }
+
+        table {
+          padding-left: 10px;
+
+          tbody tr {
+            td {
+              color: darkblue;
+              padding-bottom: 10px;
+            }
+
+            td:first-child {
+              text-align: right;
+              padding-right: 10px;
+            }
+
+            td:not(:first-child) {
+              font-weight: bold;
+            }
+          }
+        }
       }
     }
   }
-
-  > .arrival {
-    text-align: right;
-  }
 }
 
-.flightdetails {
-  padding-top: 20px;
-  width: 50%;
-  display: inline-block;
-
-  > .dividedtitle {
-    @extend %dividedtitle;
-    border-right: 2px solid #9a9a9a;
-  }
-
-  table {
-    width: 100%;
-    border: 0;
+.history {
+  padding-top: 10px;
+  > h2 {
+    color: darkblue;
     padding: 0;
     margin: 0;
-    color: darkblue;
-    thead th {
-      text-align: center;
-    }
-    tbody {
-      td:not(:first-child) {
-        font-weight: 200;
-        text-align: center;
-      }
-    }
-  }
-}
-
-.flightdata {
-  width: 50%;
-  padding-top: 20px;
-  display: inline-block;
-
-  a {
-    color: darkblue;
-    &:hover {
-      color: #ED8000;
-    }
-  }
-
-  > .dividedtitle {
-    @extend %dividedtitle;
-    border-left: 2px solid #9a9a9a;
-  }
-
-  table {
-    padding-left: 10px;
-    tbody tr {
-      td {
-        color: darkblue;
-        padding-bottom: 10px;
-      }
-
-      td:first-child {
-        text-align: right;
-        padding-right: 10px;
-      }
-
-      td:not(:first-child) {
-        font-weight: bold;
-      }
-    }
-  }
-}
-
-.flightmap {
-  width:100%;
-  height:400px;
-
-  .leaflet-container {
-    width:100%;
-    height:400px;
-
-    .leaflet-div-icon {
-      background: none;
-      border: none;
-    }
   }
 }

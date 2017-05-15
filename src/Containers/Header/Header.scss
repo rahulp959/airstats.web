@@ -28,27 +28,18 @@ header {
         margin: 0;
         padding: 0;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        align-items: center;
         list-style: none;
-        min-height: 40px;
-        box-sizing: border-box;
+        min-height: 30px;
         font-family: GillSansLight, sans-serif;
         font-size: 14px;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
 
         > li {
+          margin-right: 25px;
           > a {
-            display: block;
             color: white;
-            padding: 10px 0 7px;
             text-decoration: none;
-          }
-
-          &:first-child {
-            margin-left: -5px;
-            padding-left: 5px;
           }
 
           &:hover {
@@ -59,9 +50,6 @@ header {
       @media screen and (max-width: 768px) {
         a {
           color: #777;
-        }
-
-        ul {
         }
 
         ul li {
@@ -75,19 +63,6 @@ header {
 
         ul > li {
           margin-left: 0;
-        }
-
-        ul li ul li {
-          display: block;
-          float: none;
-        }
-
-        ul li ul {
-          display: block;
-          position: relative;
-          width: 100%;
-          z-index: 9999;
-          float: none;
         }
 
         h1 {

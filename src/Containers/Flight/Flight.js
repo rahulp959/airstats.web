@@ -108,15 +108,23 @@ class Flight extends React.Component {
 
   render () {
     return (
-      <div className='contentbox'>
+      <div className='flight'>
         <div className='flightinfo'>
           <h2>{this.props.flightData.get('callsign')}</h2>
           <h3>{this.props.flightData.get('status')}</h3>
         </div>
         <FlightProgress flightData={this.props.flightData} />
-        <FlightDetails flightData={this.props.flightData} />
-        <FlightData flightData={this.props.flightData} />
-        <div className='flightmap'>{this.renderMap()}</div>
+        <div className='flightbox'>
+          <div className='flightmap'>{this.renderMap()}</div>
+          <div className='flightstrip'>
+            <FlightDetails flightData={this.props.flightData} />
+            <FlightData flightData={this.props.flightData} />
+          </div>
+        </div>
+        <div className='history'>
+          <h2>Activity Log</h2>
+          Coming soon.
+        </div>
       </div>
     )
   }
