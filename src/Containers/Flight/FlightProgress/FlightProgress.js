@@ -8,10 +8,10 @@ class FlightProgress extends React.Component {
         <div className='departure'>
           <span className='icao'>
             {this.props.flightData.get('dep')}
-          </span>
+          </span><br />
           <span className='name'>
             {this.props.flightData.get('dep_name')}
-          </span>
+          </span><br />
           <span className='location'>
             <span className='city'> {this.props.flightData.get('dep_city') && he.decode(this.props.flightData.get('dep_city'))}</span>,
             <span className='admin'> {this.props.flightData.get('dep_admin') && he.decode(this.props.flightData.get('dep_admin'))}</span>,
@@ -21,10 +21,10 @@ class FlightProgress extends React.Component {
         <div className='arrival'>
           <span className='icao'>
             {this.props.flightData.get('arr')}
-          </span>
+          </span><br />
           <span className='name'>
             {this.props.flightData.get('arr_name')}
-          </span>
+          </span><br />
           <span className='location'>
             <span className='city'> {this.props.flightData.get('arr_city') && he.decode(this.props.flightData.get('arr_city'))}</span>,
             <span className='admin'> {this.props.flightData.get('arr_admin') && he.decode(this.props.flightData.get('arr_admin'))}</span>,

@@ -13,7 +13,7 @@ import NotFound from './Containers/NotFound/NotFound'
 import './App.scss'
 
 ReactGA.initialize('UA-99000586-1', {
-  debug: true
+  debug: false
 })
 
 const logPageView = () => {
