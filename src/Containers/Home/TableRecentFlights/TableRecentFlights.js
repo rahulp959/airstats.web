@@ -17,8 +17,7 @@ class TableRecentFlights extends Component {
     return (
       <table className='tablerecentflights'>
         <tbody>
-          {(this.props.recent.get('isFetching')) ? <tr><td colSpan='2'>Loading...</td></tr>
-          : this.props.recent.get('flights').map((flight, i) => {
+          {this.props.recent.get('flights').map((flight, i) => {
             let iz = flight.get('id')
             return (
               <tr onClick={() => this.handleClick({iz})} key={i}>

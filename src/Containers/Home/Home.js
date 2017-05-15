@@ -26,12 +26,12 @@ class Home extends React.Component {
 
   render () {
     return (
-      <div className='contentbox'>
-        <div className='divrecentbox'>
+      <div className='home'>
+        <div className='recentbox'>
           <div className='title'>recent</div>
           <TableRecentFlights recent={this.props.recent} />
         </div>
-        <div className='newsbox'>
+        <div className='statsbox'>
           <div className='title'>Number Statistics</div>
           <TableStats general={this.props.general} />
           <div className='sincebox' style={{textTransform: 'none'}}>Since Apr 30 2017</div>

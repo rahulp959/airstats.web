@@ -1,13 +1,33 @@
 @import "../../styles/contentbox.scss";
 @import "../../styles/title.scss";
 
-.divrecentbox {
+.home {
+  @extend %base;
+  margin: 15px auto 0 auto;
+  > div {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .home {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.recentbox {
   background: rgba(0, 47, 93, .8);
+  background-image: url('./metro1.png');
   background-size: cover;
-/*  flex: 1;*/
-  margin-right: 20px;
-  background-image: url('./2zjkl80.jpg');
+  flex-basis: 60%;
   padding: 15px;
+}
+
+.statsbox {
+  background: rgb(0, 47, 93);
+  padding: 15px;
+  flex-basis: 30%;
 }
 
 .sincebox {
@@ -64,12 +84,4 @@
       }
     }
   }
-}
-
-.newsbox {
-  border: 1px solid black;
-  background: rgba(0, 47, 93, .8);
-  color: rgb(255,255,255);
-  width: 33%;
-  padding: 15px;
 }
