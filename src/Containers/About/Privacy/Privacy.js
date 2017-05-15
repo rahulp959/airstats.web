@@ -1,5 +1,5 @@
 import React from 'react'
-import './Privacy.js'
+import './Privacy.scss'
 
 class Privacy extends React.Component {
   render () {
@@ -29,3 +29,5 @@ class Privacy extends React.Component {
     )
   }
 }
+
+export default Privacy
