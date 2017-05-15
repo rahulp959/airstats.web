@@ -56,6 +56,9 @@ class Header extends Component {
                 <Link to='/statistics'>Statistics</Link>
               </li>{ */}
               <li role='menuitem'>
+                <Link to='/faq'>FAQ</Link>
+              </li>
+              <li role='menuitem'>
                 <Link to='/about'>About AirStats</Link>
               </li>
               <li role='menuitem'>

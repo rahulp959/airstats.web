@@ -1,0 +1,8 @@
+@import '../../../styles/_base.scss';
+
+.privacy {
+  @extend %base;
+  h2, h3 {
+    color: darkblue;
+  }
+}
