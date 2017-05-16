@@ -1,0 +1,33 @@
+table.activitylog {
+  width: 100%;
+  border-collapse: collapse;
+  border: 0;
+  padding: 0;
+  margin: 10px 0 0;
+  color: darkblue;
+  text-align: left;
+
+  thead > tr {
+    border-top: 2px solid #aaaaaa;
+    background-color: #dddddd;
+
+    th {
+      padding: 10px 0 10px 10px;
+    }
+  }
+
+  tbody {
+    td {
+      padding: 10px 0 10px 10px;
+    }
+
+    .noactivity {
+      text-align: center;
+      padding-left: 0;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  }
+}

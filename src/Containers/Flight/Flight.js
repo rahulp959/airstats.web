@@ -10,6 +10,7 @@ import { fetchFlightPosition, fetchFlightData } from '../../ducks/flight'
 import FlightProgress from './FlightProgress/FlightProgress'
 import FlightDetails from './FlightDetails/FlightDetails'
 import FlightData from './FlightData/FlightData'
+import ActivityLog from './ActivityLog/ActivityLog'
 
 import planeUrl from './plane.png'
 
@@ -123,7 +124,7 @@ class Flight extends React.Component {
         </div>
         <div className='history'>
           <h2>Activity Log</h2>
-          Coming soon.
+          <ActivityLog callsign={this.props.flightData.get('callsign')} />
         </div>
       </div>
     )
