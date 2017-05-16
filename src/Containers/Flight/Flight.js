@@ -17,7 +17,14 @@ import planeUrl from './plane.png'
 let dataDispatcher, positionDispatcher
 
 class Flight extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {id: ''}
+  }
+
   componentDidMount () {
+    this.setState({id: this.props.match.params.flightId})
     this.props.dispatch(fetchFlightPosition(this.props.match.params.flightId))
     this.props.dispatch(fetchFlightData(this.props.match.params.flightId))
 
@@ -26,6 +33,19 @@ class Flight extends React.Component {
       return this.props.dispatch(fetchFlightData(this.props.match.params.flightId))
     }, 60000)
     positionDispatcher = setInterval(() => this.props.dispatch(fetchFlightPosition(this.props.match.params.flightId)), 60000)
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (prevProps === undefined) {
+      return
+    }
+
+    if (this.state.id !== this.props.match.params.flightId) {
+      window.scrollTo(0, 0)
+      this.props.dispatch(fetchFlightPosition(this.props.match.params.flightId))
+      this.props.dispatch(fetchFlightData(this.props.match.params.flightId))
+      this.setState({id: this.props.match.params.flightId})
+    }
   }
 
   componentWillUnmount () {

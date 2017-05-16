@@ -12,7 +12,6 @@ class ActivityLog extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.dir(nextProps)
     if (this.state.searchTerm !== nextProps.callsign) {
       nextProps.dispatch(fetchSearch(nextProps.callsign))
       this.setState({searchTerm: nextProps.callsign})
