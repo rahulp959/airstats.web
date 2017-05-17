@@ -29,3 +29,8 @@
   @extend %button;
   background: rgb(66, 184, 221);
 }
+
+%button-darkblue {
+  @extend %button;
+  background: #002F5D;
+}

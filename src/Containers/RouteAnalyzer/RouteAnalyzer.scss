@@ -1,0 +1,33 @@
+@import '../../styles/_base.scss';
+@import '../../styles/_button.scss';
+@import '../../styles/_colours.scss';
+
+.routeanalyzer {
+  @extend %base;
+
+  table {
+    td,th {
+      padding: 5px 10px 5px 10px;
+    }
+    thead {
+      tr > th {
+        background: linear-gradient(#267bae, #3a5f97);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #fff;
+      }
+    }
+    .hdr {
+      background-color: #00a0e2;
+      color: #fff;
+    }
+    .button {
+      @extend %button-darkblue;
+    }
+  }
+
+  .warning {
+    @extend %warning;
+    font-size: 8pt;
+  }
+}
