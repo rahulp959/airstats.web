@@ -22,7 +22,7 @@ class FlightRow extends React.Component {
     depdate = depdate.split(' ')
     let arrdate = ''
     let duration = ''
-    if (this.props.searchResult.get('status') == 'Arrived') {
+    if (this.props.searchResult.get('status') === 'Arrived') {
       arrdate = this.props.searchResult.get('arrived_at').toString()
       arrdate = arrdate.split(' ')
       if (this.props.searchResult.get('duration_d') > 0) {
