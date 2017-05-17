@@ -5,7 +5,9 @@
 .routeanalyzer {
   @extend %base;
 
-  table {
+  table.routes { width: 100%; }
+
+  table.search,table.routes {
     td,th {
       padding: 5px 10px 5px 10px;
     }

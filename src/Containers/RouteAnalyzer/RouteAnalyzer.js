@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchRoutes} from '../../ducks/routes'
 import {withRouter} from 'react-router'
-import {Link} from 'react-router-dom'
 import './RouteAnalyzer.scss'
 
 import AnalyzerTable from './AnalyzerTable/AnalyzerTable.js'
@@ -42,7 +41,7 @@ class RouteAnalyzer extends React.Component {
       nextProps.dispatch(fetchRoutes(nextProps.match.params.dep, nextProps.match.params.dest))
       this.setState({
         searchDep: nextProps.match.params.dep,
-        searchDest: nextProps.matchParams.dest
+        searchDest: nextProps.match.params.dest
       })
     }
   }
@@ -58,8 +57,6 @@ class RouteAnalyzer extends React.Component {
     event.preventDefault()
     if (this.state.searchDep !== '' && this.state.searchDest !== '') {
       this.props.history.push(`/analyzer/${this.state.searchDep}/${this.state.searchDest}`)
-    } else {
-      alert('All fields required')
     }
   }
 
@@ -68,7 +65,7 @@ class RouteAnalyzer extends React.Component {
       <div className='routeanalyzer'>
         <p>For flight simulation planning. Be certain to verify altitude, type and terminal procedures you are capable of flying.</p>
         <form onSubmit={this.onSearch}>
-          <table>
+          <table className='search'>
             <thead>
               <tr>
                 <th>Route Analyzer</th>

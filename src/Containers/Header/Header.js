@@ -49,10 +49,10 @@ class Header extends Component {
               <li role='menuitem'>
                 <Link to='/flight/map'>Live Flight Map</Link>
               </li>
-              {/* }<li>
-                <Link to='/statistics/route'>Route Analysis</Link>
-              </li>
               <li>
+                <Link to='/analyzer'>Route Analysis</Link>
+              </li>
+              {/* }<li>
                 <Link to='/statistics'>Statistics</Link>
               </li>{ */}
               <li role='menuitem'>
