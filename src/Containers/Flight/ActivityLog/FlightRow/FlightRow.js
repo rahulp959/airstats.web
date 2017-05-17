@@ -20,17 +20,20 @@ class FlightRow extends React.Component {
     let day = days[d.getDay()]
     let depdate = this.props.searchResult.get('departed_at').toString()
     depdate = depdate.split(' ')
-    let arrdate = this.props.searchResult.get('arrived_at').toString()
-    arrdate = arrdate.split(' ')
+    let arrdate = ''
     let duration = ''
-    if (this.props.searchResult.get('duration_d') > 0) {
-      duration = this.props.searchResult.get('duration_d') + 'd '
-    }
-    if (this.props.searchResult.get('duration_h') > 0) {
-      duration = duration + this.props.searchResult.get('duration_h') + 'h '
-    }
-    if (this.props.searchResult.get('duration_m') > 0) {
-      duration = duration + this.props.searchResult.get('duration_m') + 'm'
+    if (this.props.searchResult.get('status') === 'Arrived') {
+      arrdate = this.props.searchResult.get('arrived_at').toString()
+      arrdate = arrdate.split(' ')
+      if (this.props.searchResult.get('duration_d') > 0) {
+        duration = this.props.searchResult.get('duration_d') + 'd '
+      }
+      if (this.props.searchResult.get('duration_h') > 0) {
+        duration = duration + this.props.searchResult.get('duration_h') + 'h '
+      }
+      if (this.props.searchResult.get('duration_m') > 0) {
+        duration = duration + this.props.searchResult.get('duration_m') + 'm'
+      }
     }
     let id = this.props.searchResult.get('id')
     return (

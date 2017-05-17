@@ -8,9 +8,10 @@ import About from './Containers/About/About'
 import Privacy from './Containers/About/Privacy/Privacy'
 import FAQ from './Containers/FAQ/FAQ'
 import Flight from './Containers/Flight/Flight'
-import Home from './Containers/Home/Home'
-import Header from './Containers/Header/Header'
 import Footer from './Containers/Footer/Footer'
+import Header from './Containers/Header/Header'
+import Home from './Containers/Home/Home'
+import RouteAnalyzer from './Containers/RouteAnalyzer/RouteAnalyzer'
 import Search from './Containers/Search/Search'
 import NotFound from './Containers/NotFound/NotFound'
 import './App.scss'
@@ -39,6 +40,7 @@ const App = ({store}) => (
           <Route exact path='/flight/map' component={NotFound} />
           <Route path='/flight/:flightId' component={Flight} />
           <Route path='/search/:searchTerm' component={Search} />
+          <Route path='/analyzer/:dep?/:dest?' component={RouteAnalyzer} />
           <Route component={NotFound} />
         </Switch>
         <Footer />
