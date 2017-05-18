@@ -11,6 +11,7 @@ import Flight from './Containers/Flight/Flight'
 import Footer from './Containers/Footer/Footer'
 import Header from './Containers/Header/Header'
 import Home from './Containers/Home/Home'
+import FlightMap from './Containers/FlightMap/FlightMap'
 import RouteAnalyzer from './Containers/RouteAnalyzer/RouteAnalyzer'
 import Search from './Containers/Search/Search'
 import NotFound from './Containers/NotFound/NotFound'
@@ -37,7 +38,7 @@ const App = ({store}) => (
           <Route exact path='/about' component={About} />
           <Route exact path='/about/privacy' component={Privacy} />
           <Route exact path='/faq' component={FAQ} />
-          <Route exact path='/flight/map' component={NotFound} />
+          <Route exact path='/flight/map' component={FlightMap} />
           <Route path='/flight/:flightId' component={Flight} />
           <Route path='/search/:searchTerm' component={Search} />
           <Route path='/analyzer/:dep?/:dest?' component={RouteAnalyzer} />
