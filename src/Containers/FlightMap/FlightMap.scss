@@ -1,0 +1,27 @@
+@import '../../styles/_button.scss';
+
+.mapbox {
+  display: flex;
+  height: 700px;
+
+  .leaflet-container {
+      flex: 1;
+
+    .leaflet-div-icon {
+      background: none;
+      border: none;
+    }
+
+    .row1 {
+      color: darkblue;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    a.track {
+      @extend %button-green;
+      padding: 10px;
+      cursor: pointer;
+    }
+  }
+}

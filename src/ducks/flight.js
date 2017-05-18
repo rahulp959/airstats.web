@@ -4,6 +4,9 @@ import Immutable from 'immutable'
 /* Flight Data */
 export const REQUEST_FLIGHT_DATA = 'REQUEST_FLIGHT_DATA'
 export const RECEIVE_FLIGHT_DATA = 'RECEIVE_FLIGHT_DATA'
+/* Positions */
+export const REQUEST_FLIGHT_POSITION = 'REQUEST_FLIGHT_POSITION'
+export const RECEIVE_FLIGHT_POSITION = 'RECEIVE_FLIGHT_POSITION'
 
 export function requestFlightData () {
   return {
@@ -29,16 +32,11 @@ export function fetchFlightData (flightId) {
   }
 }
 
-/* Positions */
-export const REQUEST_FLIGHT_POSITION = 'REQUEST_FLIGHT_POSITION'
-
 export function requestFlightPosition () {
   return {
     type: REQUEST_FLIGHT_POSITION
   }
 }
-
-export const RECEIVE_FLIGHT_POSITION = 'RECEIVE_FLIGHT_POSITION'
 
 export function receiveFlightPosition (json) {
   return {
