@@ -1,0 +1,56 @@
+@import "../../styles/contentbox.scss";
+@import "../../styles/title.scss";
+
+@media screen and (min-width: 768px) {
+  .top10 {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.topcontainer {
+  @extend %base;
+  margin: 15px auto 15px auto;
+}
+
+.top10 {
+  @extend %base;
+  margin: 15px auto 15px auto;
+
+  .topbox {
+    background: rgba(0, 47, 93, .8);
+    flex-basis: 48%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  table.tableTop {
+    border-collapse: collapse;
+    width: 100%;
+    background: rgba(0, 0, 0, .7);
+    > tbody > tr {
+      border-bottom: 1px solid rgb(255,255,255);
+      > td {
+        padding: 0;
+        margin: 0;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        color: white;
+        text-align: center;
+        width: 50%;
+
+        &:first-child {
+          padding-left: 5px;
+          padding-right: 15px;
+        }
+        &:last-child {
+          padding-right: 5px;
+        }
+      }
+
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}
