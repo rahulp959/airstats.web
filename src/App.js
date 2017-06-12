@@ -14,6 +14,7 @@ import Home from './Containers/Home/Home'
 import FlightMap from './Containers/FlightMap/FlightMap'
 import RouteAnalyzer from './Containers/RouteAnalyzer/RouteAnalyzer'
 import Search from './Containers/Search/Search'
+import Top10 from './Containers/Top10/Top10'
 import NotFound from './Containers/NotFound/NotFound'
 import './App.scss'
 
@@ -39,6 +40,7 @@ const App = ({store}) => (
           <Route exact path='/about/privacy' component={Privacy} />
           <Route exact path='/faq' component={FAQ} />
           <Route exact path='/flight/map' component={FlightMap} />
+          <Route exact path='/statistics/top' component={Top10} />
           <Route path='/flight/:flightId' component={Flight} />
           <Route path='/search/:searchTerm' component={Search} />
           <Route path='/analyzer/:dep?/:dest?' component={RouteAnalyzer} />

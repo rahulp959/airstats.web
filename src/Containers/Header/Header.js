@@ -52,9 +52,9 @@ class Header extends Component {
               <li>
                 <Link to='/analyzer'>Route Analysis</Link>
               </li>
-              {/* }<li>
-                <Link to='/statistics'>Statistics</Link>
-              </li>{ */}
+              <li>
+                <Link to='/statistics/top'>Top Airports</Link>
+              </li>
               <li role='menuitem'>
                 <Link to='/faq'>FAQ</Link>
               </li>
