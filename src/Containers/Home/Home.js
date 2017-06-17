@@ -26,15 +26,20 @@ class Home extends React.Component {
 
   render () {
     return (
-      <div className='home'>
-        <div className='recentbox'>
-          <div className='title'>recent</div>
-          <TableRecentFlights recent={this.props.recent} />
+      <div>
+        <div className='home'>
+          <div className='recentbox'>
+            <div className='title'>recent</div>
+            <TableRecentFlights recent={this.props.recent} />
+          </div>
+          <div className='statsbox'>
+            <div className='title'>Number Statistics</div>
+            <TableStats general={this.props.general} />
+            <div className='sincebox' style={{textTransform: 'none'}}>Since Apr 30 2017</div>
+          </div>
         </div>
-        <div className='statsbox'>
-          <div className='title'>Number Statistics</div>
-          <TableStats general={this.props.general} />
-          <div className='sincebox' style={{textTransform: 'none'}}>Since Apr 30 2017</div>
+        <div className='timelapse'>
+          <iframe src='https://www.youtube.com/embed/GdT4xmhjEVk?ecver=1' frameBorder='0' />
         </div>
       </div>
     )
