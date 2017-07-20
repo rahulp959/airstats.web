@@ -20,9 +20,11 @@ class FlightDetails extends React.Component {
               <td>{this.props.flightData.get('departed_at') ? this.props.flightData.get('departed_at') : 'Not Departed'}</td>
               <td>
                 {
-                  (this.props.flightData.get('status') !== 'Arrived')
-                    ? (this.props.flightData.get('arrival_est') === 'Unknown') ? '' : (<i>Est {this.props.flightData.get('arrival_est')}</i>)
-                    : this.props.flightData.get('arrived_at')
+                  (this.props.flightData.get('status') === 'Incomplete')
+                    ? 'Unknown'
+                    : (this.props.flightData.get('status') !== 'Arrived')
+                      ? (this.props.flightData.get('arrival_est') === 'Unknown') ? '' : (<i>Est {this.props.flightData.get('arrival_est')}</i>)
+                      : this.props.flightData.get('arrived_at')
                 }
               </td>
             </tr>
