@@ -59,7 +59,8 @@ export function fetchFlightPosition (flightId) {
 export default function flight (state = Immutable.fromJS({ isFetching: true, flight: { positions: [], flightData: {} } }), action) {
   switch (action.type) {
     case REQUEST_FLIGHT_POSITION:
-      return state.setIn(['isFetching'], true)
+      let curFetch = state.getIn(['isFetching'])
+      return state.setIn(['isFetching'], curFetch + 1)
     case RECEIVE_FLIGHT_POSITION:
       // Let's break this motherfucker down,
       // First, we filter over the whole original list
@@ -79,13 +80,16 @@ export default function flight (state = Immutable.fromJS({ isFetching: true, fli
           ) === index
         }
       )
-      let newState = state.setIn(['isFetching'], false)
+      curFetch = state.getIn(['isFetching'])
+      let newState = state.setIn(['isFetching'], curFetch - 1)
       newState = newState.setIn(['flight', 'positions'], newPositions)
       return newState
     case REQUEST_FLIGHT_DATA:
-      return state.setIn(['isFetching'], true)
+      curFetch = state.getIn(['isFetching'])
+      return state.setIn(['isFetching'], curFetch - 1)
     case RECEIVE_FLIGHT_DATA:
-      newState = state.setIn(['isFetching'], false)
+      curFetch = state.getIn(['isFetching'])
+      newState = state.setIn(['isFetching'], curFetch - 1)
       newState = newState.setIn(['flight', 'flightData'], action.flightData)
       return newState
     default:

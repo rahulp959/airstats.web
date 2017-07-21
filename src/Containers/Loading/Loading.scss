@@ -1,0 +1,11 @@
+@import "../../styles/_base.scss";
+
+.loading {
+  @extend %base;
+  text-align: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  h3 {
+    font-color: rgba(0, 47, 93, .8);
+  }
+}
